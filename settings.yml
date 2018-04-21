@@ -1,0 +1,14 @@
+---
+window:
+  width:   960
+  height:  560
+
+instance_defaults:
+  z_index: 0
+  color:   0xff_000000
+
+fort:
+  size:
+    width:  240
+    height: 140
+...

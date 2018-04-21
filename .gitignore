@@ -1,0 +1,5 @@
+/Gemfile.lock
+/.byebug_history
+/.bundle/
+/**/.virb/
+/log/*.log
