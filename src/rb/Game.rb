@@ -98,14 +98,18 @@ class Game < Gosu::Window
 		return @fort
 	end
 
+	def game_over
+		puts "GAME OVER"
+		@running = false
+	end
+
 	def button_down key_id
 		#char = Gosu.button_id_to_char key_id
 		exit  if (key_id == Gosu::KB_ESCAPE)
 	end
 
-	def game_over
-		puts "GAME OVER"
-		@running = false
+	def needs_cursor?
+		return true
 	end
 
 	def update
