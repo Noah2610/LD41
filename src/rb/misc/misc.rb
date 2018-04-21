@@ -11,13 +11,3 @@ def require_files dir, args = {}
 		require filepath
 	end
 end
-
-## Convert keys to symbols in Hash
-class Hash
-	def keys_to_sym
-		return self.map do |key, val|
-			new_key = key.is_a?(String) ? key.to_sym : key
-			next [new_key, val]
-		end .to_h
-	end
-end

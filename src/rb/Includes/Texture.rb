@@ -1,17 +1,16 @@
 module Texture
 	def initialize args = {}
 		super
-		image_file = args[:image]
-		if (image_file.nil? || !File.file?(image_file))
-			msg = "Module Texture received an invalid image file path! #{image_file}"
+		if (@image_file.nil? || !File.file?(@image_file))
+			msg = "#{self.class}: invalid image file path! #{@image_file}"
 			LOGGER.fatal msg
 			abort msg
 		end
-		load_image image_file
+		load_image
 	end
 
-	def load_image image_file
-		@image = Gosu::Image.new image_file, retro: true
+	def load_image
+		@image = Gosu::Image.new @image_file, retro: true
 		size   = get_size
 		@scale = {
 			x: (size[:width].to_f  / @image.width.to_f),

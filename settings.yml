@@ -1,14 +1,38 @@
 ---
 window:
-  width:   960
-  height:  560
+  width:  960
+  height: 560
+  title:  'Ludum Dare 41!'
+
+game:
+  colors:
+    background:       0xff_cccccc
+  background_z_index: 0
 
 instance_defaults:
   z_index: 0
   color:   0xff_000000
 
+entity_defaults:
+  z_index: 20
+
+enemy_defaults:
+  size:
+    width:   64
+    height:  128
+  z_index:   20
+  move_step: 4
+
 fort:
   size:
     width:  240
-    height: 140
+    height: 500
+  z_index:  10
+
+enemies:
+  normal:
+    move_step: 4
+
+clusters:
+  spawn_position_y_min: 64
 ...

@@ -1,20 +1,20 @@
-# misc
-require File.join DIR[:misc], 'misc'
+require File.join DIR[:misc],         'extensions'
 
-# Settings
-require File.join DIR[:rb], 'Settings'
+require File.join DIR[:misc],         'misc'
+
+require File.join DIR[:rb],           'Settings'
 
 # Includes (modules)
 require_files DIR[:includes]
 
-# Instance
-require File.join DIR[:rb], 'Instance'
+require File.join DIR[:rb],           'Instance'
 
-# Entity
-require File.join DIR[:rb], 'Entity'
+require File.join DIR[:rb],           'Entity'
 
-# Fort
-require File.join DIR[:rb], 'Fort'
+require File.join DIR[:clusters],     'Cluster'
+require_files DIR[:clusters], except: 'Cluster'
 
-# Enemies
-require File.join DIR[:rb], 'Enemy'
+require File.join DIR[:enemies],      'Enemy'
+require_files DIR[:enemies], except:  'Enemy'
+
+require File.join DIR[:rb],           'Fort'

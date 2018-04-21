@@ -25,7 +25,11 @@ class Settings
 		else
 			ret = @settings[key]
 		end
-		return ret
+		if (ret.is_a? Hash)
+			return ret.keys_to_sym
+		else
+			return ret
+		end
 	end
 
 	def method_missing meth, *args

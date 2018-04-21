@@ -3,15 +3,15 @@ class Fort < Instance
 
 	def initialize args = {}
 		setup
-		image_file = File.join DIR[:art][:images], 'Fort.png'
-		super ({ image: image_file }.merge( args ))
+		super args
 	end
 
 	def setup
-		@size     = SETTINGS.fort(:size).keys_to_sym
-		@position = GAME.get_center_position
-		@z_index  = 10
-		@align    = :center
+		@size       = SETTINGS.fort(:size).keys_to_sym
+		@position   = GAME.get_center_position
+		@z_index    = SETTINGS.fort(:z_index)
+		@align      = :center
+		@image_file = File.join DIR[:images], 'Fort.png'
 	end
 
 	def update

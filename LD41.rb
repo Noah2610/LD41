@@ -15,10 +15,10 @@ DIR = {
 	rb:       File.join(ROOT, 'src/rb'),
 	misc:     File.join(ROOT, 'src/rb/misc'),
 	includes: File.join(ROOT, 'src/rb/Includes'),
-	art: {
-		images: File.join(ROOT, 'src/Art/Images'),
-		audio:  File.join(ROOT, 'src/Art/Audio')
-	},
+	enemies:  File.join(ROOT, 'src/rb/Enemies'),
+	clusters: File.join(ROOT, 'src/rb/Clusters'),
+	images:   File.join(ROOT, 'src/Art/Images'),
+	audio:    File.join(ROOT, 'src/Art/Audio'),
 	settings: File.join(ROOT, 'settings.yml'),
 	log:      File.join(ROOT, 'log')
 }

@@ -37,43 +37,51 @@ class Instance
 	def get_position_to_draw_for_center
 		position = get_position
 		size     = get_size
-		return {
+		return get_offset_position_of({
 			x: (position[:x] - (size[:width] * 0.5)).round,
 			y: (position[:y] - (size[:height] * 0.5)).round
-		}
+		})
 	end
 
 	def get_position_to_draw_for_top_left
-		return get_position
+		return get_offset_position_of get_position
 	end
 
 	def get_position_to_draw_for_top_right
 		position = get_position
 		size     = get_size
-		return {
+		return get_offset_position_of({
 			x: (position[:x] - size[:width]),
 			y: position[:y]
-		}
+		})
 	end
 
 	def get_position_to_draw_for_bottom_left
 		position = get_position
 		size     = get_size
-		return {
+		return get_offset_position_of({
 			x: position[:x],
 			y: (position[:y] - size[:height])
-		}
+		})
 	end
 
 	def get_position_to_draw_for_bottom_right
 		position = get_position
 		size     = get_size
-		return {
+		return get_offset_position_of({
 			x: (position[:x] - size[:width]),
 			y: (position[:y] - size[:height])
-		}
+		})
 	end
 
+	def get_offset_position_of position
+		offset  = GAME.get_canvas_offset
+		ret = {
+			x: position[:x] + offset[:x],
+			y: position[:y] + offset[:y]
+		}
+		return ret
+	end
 
 	def get_size target = :all
 		return nil                if (!@size)
@@ -91,6 +99,35 @@ class Instance
 
 	def get_color
 		return @color
+	end
+
+	def get_boundary side
+		case side
+		when :top,    :upper
+			return get_top_boundary
+		when :bottom, :lower
+			return get_bottom_boundary
+		when :left
+			return get_left_boundary
+		when :right
+			return get_right_boundary
+		end
+	end
+
+	def get_top_boundary
+		return get_position :y
+	end
+
+	def get_bottom_boundary
+		return get_position(:y) + get_size(:height)
+	end
+
+	def get_left_boundary
+		return get_position(:x)
+	end
+
+	def get_right_boundary
+		return get_position(:x) + get_size(:width)
 	end
 
 	def update
