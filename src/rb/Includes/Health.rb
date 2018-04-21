@@ -7,6 +7,10 @@ module Health
 		return @max_health
 	end
 
+	def has_max_health?
+		return get_health.round == get_max_health.round
+	end
+
 	def decrease_health_by amount
 		@health -= amount
 		if (get_health <= 0)

@@ -14,18 +14,35 @@ instance_defaults:
   color:   0xff_000000
 
 entity_defaults:
-  z_index: 20
+  z_index: 50
 
 enemies:
   defaults:
     size:
       width:  64
       height: 128
-    z_index:  20
+    z_index:  50
     move_step:
       x:      4
       y:      0
     damage:   10
+    health_bar:
+      relative_position:
+        x:          0.0
+        y:          0.0
+      relative_size:
+        width:      1.0
+        height:     0.1
+      colors:
+        foreground: 0xff_ff0000
+        background: 0xff_888888
+      z_indexes:
+        background: 60
+        foreground: 70
+      border_padding:
+        x:          2
+        y:          2
+
   normal:
     move_step:
       x:      4
@@ -43,15 +60,18 @@ fort:
     relative_position:
       x:                0.5
       y:                0.75
-    size:
-      width:            64
-      height:           24
+    relative_size:
+      width:            0.75
+      height:           0.1
     colors:
       foreground:       0xff_ff0000
-      background:       0xff_eeeeee
+      background:       0xff_888888
     z_indexes:
-      background: 20
-      foreground: 30
+      background:       20
+      foreground:       30
+    border_padding:
+      x:                4
+      y:                4
 
 clusters:
   defaults:

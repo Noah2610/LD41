@@ -75,7 +75,7 @@ class Instance
 	end
 
 	def get_offset_position_of position
-		offset  = GAME.get_canvas_offset
+		offset = GAME.get_canvas_offset
 		ret = {
 			x: position[:x] + offset[:x],
 			y: position[:y] + offset[:y]

@@ -110,7 +110,7 @@ class Game < Gosu::Window
 
 	def update
 		return  unless (is_running?)
-		@fort.update
+		get_fort.update
 		get_active_clusters.each &:update
 	end
 
@@ -127,7 +127,7 @@ class Game < Gosu::Window
 	def draw
 		return  unless (is_running?)
 		draw_background
-		@fort.draw
+		get_fort.draw
 		get_active_clusters.each &:draw
 		#TODO: REMOVE
 		draw_fps
