@@ -4,6 +4,8 @@ require File.join DIR[:misc],         'misc'
 
 require File.join DIR[:rb],           'Settings'
 
+require File.join DIR[:misc],         'resources'
+
 # Includes (modules)
 require_files DIR[:includes]
 
