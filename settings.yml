@@ -16,23 +16,44 @@ instance_defaults:
 entity_defaults:
   z_index: 20
 
-enemy_defaults:
-  size:
-    width:   64
-    height:  128
-  z_index:   20
-  move_step: 4
+enemies:
+  defaults:
+    size:
+      width:  64
+      height: 128
+    z_index:  20
+    move_step:
+      x:      4
+      y:      0
+    damage:   10
+  normal:
+    move_step:
+      x:      4
+      y:      0
+    damage:   10
 
 fort:
   size:
-    width:  240
-    height: 500
-  z_index:  10
-
-enemies:
-  normal:
-    move_step: 4
+    width:              240
+    height:             500
+  z_index:              10
+  health:               100
+  max_health:           100
+  health_bar:
+    relative_position:
+      x:                0.5
+      y:                0.75
+    size:
+      width:            64
+      height:           24
+    colors:
+      foreground:       0xff_ff0000
+      background:       0xff_eeeeee
+    z_indexes:
+      background: 20
+      foreground: 30
 
 clusters:
-  spawn_position_y_min: 64
+  defaults:
+    spawn_position_y_min: 64
 ...

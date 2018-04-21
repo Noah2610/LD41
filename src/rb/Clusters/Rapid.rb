@@ -9,7 +9,7 @@ module Clusters
 				),
 				Enemies::Normal.new(
 					cluster: self,
-					delay:   1.0
+					delay:   0.5
 				),
 				Enemies::Normal.new(
 					cluster: self,
@@ -17,12 +17,8 @@ module Clusters
 				),
 				Enemies::Normal.new(
 					cluster: self,
-					delay:   1.0
-				),
-				Enemies::Normal.new(
-					cluster: self,
-					delay:   1.0
-					)
+					delay:   0.5
+				)
 			]
 		end
 	end

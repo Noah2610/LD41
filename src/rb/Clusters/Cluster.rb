@@ -12,7 +12,7 @@ module Clusters
 		end
 
 		def set_spawn_position_y_for_enemy
-			padding                     = SETTINGS.clusters(:spawn_position_y_min)
+			padding                     = SETTINGS.clusters(:defaults)[:spawn_position_y_min]
 			@spawn_position_y_for_enemy = rand padding .. (GAME.get_size(:height) - padding)
 		end
 
@@ -77,6 +77,10 @@ module Clusters
 
 		def get_spawn_position_y_for_enemy
 			return @spawn_position_y_for_enemy
+		end
+
+		def active?
+			return true  if (@enemies.any?)
 		end
 
 		def draw

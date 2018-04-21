@@ -21,6 +21,7 @@ class Game < Gosu::Window
 	end
 
 	def init_game
+		@running = true
 		set_fort
 		@clusters << Clusters::Rapid.new(
 			side: :left
@@ -93,20 +94,41 @@ class Game < Gosu::Window
 		return @background_z_index
 	end
 
+	def get_fort
+		return @fort
+	end
+
 	def button_down key_id
 		#char = Gosu.button_id_to_char key_id
 		exit  if (key_id == Gosu::KB_ESCAPE)
 	end
 
+	def game_over
+		puts "GAME OVER"
+		@running = false
+	end
+
 	def update
+		return  unless (is_running?)
 		@fort.update
-		@clusters.each &:update
+		get_active_clusters.each &:update
+	end
+
+	def is_running?
+		return !!@running
+	end
+
+	def get_active_clusters
+		return @clusters.select do |cluster|
+			next cluster.active?
+		end
 	end
 
 	def draw
+		return  unless (is_running?)
 		draw_background
 		@fort.draw
-		@clusters.each &:draw
+		get_active_clusters.each &:draw
 		#TODO: REMOVE
 		draw_fps
 	end

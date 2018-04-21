@@ -1,5 +1,6 @@
 module Enemies
 	class Enemy < Entity
+		include Collision
 		include Texture
 
 		def initialize args = {}
@@ -8,14 +9,19 @@ module Enemies
 		end
 
 		def setup args = {}
-			@position    = args[:position] || { x: 0, y: 0 }
-			@size        = args[:size]     || SETTINGS.enemy_defaults(:size)
-			@z_index     = args[:z] || args[:z_index] || SETTINGS.enemy_defaults(:z_index)
-			@align       = :center
-			@move_step   = SETTINGS.enemy_defaults(:move_step)
-			@cluster     = args[:cluster]
-			@spawn_delay = args[:delay]    || 0.0
-			@spawned     = false
+			enemy_defaults = SETTINGS.enemies(:defaults)
+			@position      = args[:position] || { x: 0, y: 0 }
+			@size          = args[:size]     || enemy_defaults[:size]
+			@z_index       = args[:z] || args[:z_index] || enemy_defaults[:z_index]
+			@align         = :center
+			@move_step     = enemy_defaults[:move_step]
+			@damage        = enemy_defaults[:damage]
+			@cluster       = args[:cluster]
+			@spawn_delay   = args[:delay]    || 0.0
+			@spawned       = false
+			@can_collide_with = [
+				Fort
+			]
 		end
 
 		def get_cluster
@@ -72,26 +78,33 @@ module Enemies
 			return @spawn_delay
 		end
 
+		def attack_fort
+			# By default: Damage Fort and kill self
+			GAME.get_fort.damage_by get_damage
+		end
+
+		def get_damage
+			return @damage
+		end
+
 		def update
 			super
 			move
 		end
 
 		def move
+			move_x
+			move_y
 		end
 
-		def move_x step = @move_step
+		def move_x step = @move_step[:x]
 			step = get_polarity_for_side step
 			@position[:x] += step
 		end
 
-		def move_y step = @move_step
+		def move_y step = @move_step[:y]
 			step = get_polarity_for_side step
 			@position[:y] += step
-		end
-
-		def jump_to pos
-			@position = pos
 		end
 
 		def get_polarity_for_side num
