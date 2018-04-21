@@ -15,16 +15,12 @@ module Health
 		@health -= amount
 		if (get_health <= 0)
 			get_health = 0
-			die!
+			destroy!
 		end
 	end
 
 	def increase_health_by amount
 		@health += amount
 		@health = get_max_health  if (get_health > get_max_health)
-	end
-
-	def die!
-		GAME.game_over
 	end
 end

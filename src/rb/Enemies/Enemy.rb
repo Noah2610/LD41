@@ -11,18 +11,19 @@ module Enemies
 		end
 
 		def setup args = {}
-			enemy_defaults = SETTINGS.enemies(:defaults)
-			@position      = args[:position] || { x: 0, y: 0 }
-			@size          = args[:size]     || enemy_defaults[:size]
-			@z_index       = args[:z] || args[:z_index] || enemy_defaults[:z_index]
-			@align         = :center
-			@move_step     = enemy_defaults[:move_step]
-			@damage        = enemy_defaults[:damage]
-			@cluster       = args[:cluster]
-			@spawn_delay   = args[:delay]    || 0.0
-			@spawned       = false
+			enemy_defaults    = SETTINGS.enemies(:defaults)
+			@position         = args[:position] || { x: 0, y: 0 }
+			@size             = args[:size]     || enemy_defaults[:size]
+			@z_index          = args[:z] || args[:z_index] || enemy_defaults[:z_index]
+			@align            = :center
+			@move_step        = enemy_defaults[:move_step]
+			@damage           = enemy_defaults[:damage]
+			@cluster          = args[:cluster]
+			@spawn_delay      = args[:delay]    || 0.0
+			@spawned          = false
 			@can_collide_with = [
-				Fort
+				GAME.get_fort,
+				# Line
 			]
 			setup_health
 		end
@@ -103,6 +104,12 @@ module Enemies
 		def attack_fort
 			# By default: Damage Fort and kill self
 			GAME.get_fort.damage_by get_damage
+			destroy!
+		end
+
+		def destroy!
+			get_cluster.destroy_enemy self
+			return
 		end
 
 		def get_damage
@@ -115,8 +122,18 @@ module Enemies
 		end
 
 		def move
+			check_collision
 			move_x
 			move_y
+		end
+
+		def check_collision
+			if (collision?)
+				if (in_collision_with? GAME.get_fort)
+					attack_fort
+					return
+				end
+			end
 		end
 
 		def move_x step = @move_step[:x]

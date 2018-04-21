@@ -19,8 +19,8 @@ entity_defaults:
 enemies:
   defaults:
     size:
-      width:  64
-      height: 128
+      width:  32
+      height: 48
     z_index:  50
     move_step:
       x:      4

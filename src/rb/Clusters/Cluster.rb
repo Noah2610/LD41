@@ -83,6 +83,10 @@ module Clusters
 			return true  if (@enemies.any?)
 		end
 
+		def destroy_enemy enemy
+			@enemies.delete enemy
+		end
+
 		def draw
 			@enemies.each do |enemy|
 				enemy.draw  if (enemy.spawned?)

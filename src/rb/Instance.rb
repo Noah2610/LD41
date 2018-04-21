@@ -101,8 +101,15 @@ class Instance
 		return @color
 	end
 
-	def get_boundary side
-		case side
+	def get_boundary target = :all
+		case target
+		when :all
+			return {
+				top:    get_boundary(:top),
+				bottom: get_boundary(:bottom),
+				left:   get_boundary(:left),
+				right:  get_boundary(:right)
+			}
 		when :top,    :upper
 			return get_top_boundary
 		when :bottom, :lower
@@ -114,20 +121,26 @@ class Instance
 		end
 	end
 
+	def get_boundaries *targets
+		return targets.map do |target|
+			next [target, get_boundary(target)]
+		end .to_h
+	end
+
 	def get_top_boundary
-		return get_position :y
+		return get_position_to_draw[:y]
 	end
 
 	def get_bottom_boundary
-		return get_position(:y) + get_size(:height)
+		return get_position_to_draw[:y] + get_size(:height)
 	end
 
 	def get_left_boundary
-		return get_position(:x)
+		return get_position_to_draw[:x]
 	end
 
 	def get_right_boundary
-		return get_position(:x) + get_size(:width)
+		return get_position_to_draw[:x] + get_size(:width)
 	end
 
 	def update

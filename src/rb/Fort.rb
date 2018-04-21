@@ -1,5 +1,4 @@
 class Fort < Instance
-	include Collision
 	include Health
 	include HealthBar
 	include Texture
@@ -36,6 +35,10 @@ class Fort < Instance
 
 	def damage_by amount
 		decrease_health_by amount
+	end
+
+	def destroy!
+		GAME.game_over
 	end
 
 	def update
