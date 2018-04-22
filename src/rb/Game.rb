@@ -13,7 +13,7 @@ class Game < Gosu::Window
 		set_window_size
 		@colors             = SETTINGS.game(:colors)
 		@background_z_index = SETTINGS.game(:background_z_index)
-		@clusters           = []
+		@cluster_manager    = ClusterManager.new
 	end
 
 	def set_window_size
@@ -23,16 +23,11 @@ class Game < Gosu::Window
 	def init_game
 		@running = true
 		set_fort
-		@clusters << Clusters::Rapid.new
-		init_clusters
+		get_cluster_manager.init
 	end
 
 	def set_fort
 		@fort = Fort.new
-	end
-
-	def init_clusters
-		@clusters.each &:init
 	end
 
 	def get_center_position target = :all
@@ -111,24 +106,22 @@ class Game < Gosu::Window
 	def update
 		return  unless (is_running?)
 		get_fort.update
-		get_active_clusters.each &:update
+		get_cluster_manager.update
+	end
+
+	def get_cluster_manager
+		return @cluster_manager
 	end
 
 	def is_running?
 		return !!@running
 	end
 
-	def get_active_clusters
-		return @clusters.select do |cluster|
-			next cluster.active?
-		end
-	end
-
 	def draw
 		return  unless (is_running?)
 		draw_background
 		get_fort.draw
-		get_active_clusters.each &:draw
+		get_cluster_manager.draw
 		#TODO: REMOVE
 		draw_fps
 	end

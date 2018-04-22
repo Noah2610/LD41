@@ -65,8 +65,8 @@ fort:
     width:              240
     height:             500
   z_index:              10
-  health:               100
-  max_health:           100
+  health:               9900
+  max_health:           9900
   health_bar:
     relative_position:
       x:                0.5

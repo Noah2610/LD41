@@ -86,6 +86,12 @@ module Clusters
 			@enemies.delete enemy
 		end
 
+		def clean
+			@enemies.each do |enemy|
+				destroy_enemy enemy
+			end
+		end
+
 		def draw
 			@enemies.each do |enemy|
 				enemy.draw  if (enemy.spawned?)
