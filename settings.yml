@@ -32,6 +32,7 @@ enemies:
     damage:         1
     health:         1
     max_health:     1
+    points:         10
   health_bar:
     relative_position:
       x:            0.0
@@ -62,16 +63,7 @@ enemies:
       delay:        0.5
       image_order:
         - Small
-      #image_order:
-      #  - 0
-      #  - 1
-      #  - 2
-      #  - 3
-      #  - 4
-      #  - 5
-      #  - 6
-      #  - 7
-      #  - 8
+    points:         5
 
 prompt:
   y_offset:           16

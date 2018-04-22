@@ -13,6 +13,7 @@ module Enemies
 			}  unless (@speed.is_a? Hash)
 			@damage            = enemy_settings[:damage]   if (!!enemy_settings[:damage])
 			@z_index           = enemy_settings[:z_index]  if ((!args[:z] && !args[:z_index]) && !!enemy_settings[:z_index])
+			@points            = enemy_settings[:points]   if (!!enemy_settings[:points])
 			animation_settings = SETTINGS.enemies(:normal)[:animation]
 			sorted_image_keys  = animation_settings[:image_order].map { |x| x.to_s.to_sym }
 			@images            = RESOURCES[:images][:enemies][:normal].to_sorted_a sorted_image_keys

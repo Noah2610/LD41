@@ -28,6 +28,7 @@ module Enemies
 			]
 			@amount_of_keys   = args[:keys] || 1
 			@speed_multiplier = DIFFICULTY.get_speed_multiplier
+			@points           = enemy_defaults[:points]
 			setup_prompt
 		end
 
@@ -96,7 +97,7 @@ module Enemies
 		def get_spawn_position_y
 			position_y_from_cluster = get_cluster.get_spawn_position_y_for_enemy
 			health_bar_height       = get_prompt.get_health_bar_size(:height)
-			top_boundary            = get_prompt.get_top_boundary - health_bar_height
+			top_boundary            = position_y_from_cluster - get_prompt.get_size(:height) - get_prompt.get_position_y_offset - health_bar_height
 			bottom_boundary         = position_y_from_cluster + health_bar_height
 			return ((get_size(:height).to_f / 2.0) + get_prompt.get_position_y_offset + get_prompt.get_size(:height) + health_bar_height).round  if (top_boundary    < 0)
 			return (GAME.get_size(:height) - (get_size(:height).to_f / 2.0)).round                                                               if (bottom_boundary > GAME.get_size(:height))
@@ -114,8 +115,12 @@ module Enemies
 		end
 
 		def destroy!
+			increase_score
 			get_cluster.destroy_enemy self
-			return
+		end
+
+		def increase_score
+			SCORE.increase_score_by @points
 		end
 
 		def get_damage
