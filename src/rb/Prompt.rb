@@ -20,6 +20,7 @@ class Prompt < Instance
 		@z_indexes         = prompt_settings[:z_indexes]  if (!!prompt_settings[:z_indexes])
 		setup_health
 		set_random_keys
+		set_health
 	end
 
 	def setup_health
@@ -48,6 +49,11 @@ class Prompt < Instance
 		end
 	end
 
+	def set_health
+		@health     = get_keys.size
+		@max_health = @health.dup
+	end
+
 	def get_keys
 		return @keys || []
 	end
@@ -66,6 +72,26 @@ class Prompt < Instance
 
 	def inactive?
 		return !active?
+	end
+
+	def handle_key_down key_id
+		return        if (inactive?)
+		attack_enemy  if (proper_key_id? key_id)
+	end
+
+	def proper_key_id? key_id
+		#TODO: Non-sequential?
+		char = Gosu.button_id_to_char(key_id).upcase
+		return char == get_keys.last
+	end
+
+	def attack_enemy
+		@keys.delete_at -1
+		decrease_health_by 1
+	end
+
+	def destroy!
+		get_enemy.destroy!
 	end
 
 	def update
@@ -138,6 +164,6 @@ class Prompt < Instance
 	end
 
 	def get_text_from_keys
-		return get_keys.join('')
+		return get_keys.reverse.join('')
 	end
 end

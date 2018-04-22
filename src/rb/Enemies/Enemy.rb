@@ -129,6 +129,18 @@ module Enemies
 			get_prompt.deactivate!
 		end
 
+		def active?
+			return get_prompt.active?
+		end
+
+		def inactive?
+			return get_prompt.inactive?
+		end
+
+		def handle_key_down key_id
+			get_prompt.handle_key_down key_id
+		end
+
 		def update
 			super
 			move

@@ -90,7 +90,7 @@ class Game < Gosu::Window
 	def button_down key_id
 		#char = Gosu.button_id_to_char key_id
 		exit  if (key_id == Gosu::KB_ESCAPE)
-
+		get_fort.handle_key_down key_id
 	end
 
 	def needs_cursor?
@@ -152,8 +152,9 @@ class Game < Gosu::Window
 	end
 end
 
-SETTINGS = Settings.new
-GAME     = Game.new
+SETTINGS  = Settings.new
+RESOURCES = get_resources
+GAME      = Game.new
 GAME.init_game
 LOGGER.info 'Game started'
 GAME.show

@@ -9,7 +9,7 @@ module Clusters
 					cluster: self,
 					side:    side,
 					keys:    1,
-					delay:   1
+					delay:   0.5
 				)
 			end
 		end

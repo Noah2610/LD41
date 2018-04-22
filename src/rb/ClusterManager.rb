@@ -59,6 +59,12 @@ class ClusterManager
 		end .flatten
 	end
 
+	def get_active_enemies
+		return get_enemies.select do |enemy|
+			next enemy.active?
+		end
+	end
+
 	def update
 		clean_clusters
 		add_new_cluster  unless (has_clusters?)

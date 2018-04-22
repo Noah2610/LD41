@@ -66,6 +66,12 @@ class Fort < Instance
 		GAME.game_over
 	end
 
+	def handle_key_down key_id
+		GAME.get_cluster_manager.get_active_enemies.each do |enemy|
+			enemy.handle_key_down key_id
+		end
+	end
+
 	def update
 		super
 		update_lines
