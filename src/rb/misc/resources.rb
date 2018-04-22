@@ -1,12 +1,19 @@
 def get_resources
 	return {
 		images: {
+			background: Gosu::Image.new(
+				File.join(DIR[:images], 'drive/Background.png'),
+				GOSU_IMAGE_OPTIONS
+			),
 			fort:   Gosu::Image.new(
 				File.join(DIR[:images], 'Fort.png'),
-				retro: true
+				GOSU_IMAGE_OPTIONS
 			),
 			enemies: {
-				normal: load_images_from_directory(File.join DIR[:images], 'Enemies/Normal')
+				normal: load_images_from_directory(File.join DIR[:images], 'drive/Normal'),
+				big:    load_images_from_directory(File.join DIR[:images], 'drive/Big'),
+				wizard: load_images_from_directory(File.join DIR[:images], 'drive/Wizard'),
+				zombie: load_images_from_directory(File.join DIR[:images], 'drive/Zombie')
 			}
 		},
 		fonts: {

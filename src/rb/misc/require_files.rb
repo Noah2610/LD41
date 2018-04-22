@@ -6,6 +6,8 @@ require File.join DIR[:rb],           'Settings'
 
 require File.join DIR[:misc],         'resources'
 
+require File.join DIR[:rb],           'DifficultyManager'
+
 # Includes (modules)
 require_files DIR[:includes]
 

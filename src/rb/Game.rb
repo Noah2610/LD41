@@ -7,14 +7,16 @@ class Game < Gosu::Window
 
 	# Called upon instantiation
 	def setup
-		set_window_size
-		@colors             = SETTINGS.game(:colors)
-		@background_z_index = SETTINGS.game(:background_z_index)
-		@cluster_manager    = ClusterManager.new
-	end
-
-	def set_window_size
-		@size = SETTINGS.window(:size).keys_to_sym
+		@size                     = SETTINGS.window(:size).keys_to_sym
+		@colors                   = SETTINGS.game(:colors)
+		@background_z_index       = SETTINGS.game(:background_z_index)
+		@background_image_z_index = SETTINGS.game(:background_image_z_index)
+		@background_image         = RESOURCES[:images][:background]
+		@background_image_scale   = {
+			x: (get_size(:width).to_f  / @background_image.width.to_f),
+			y: (get_size(:height).to_f / @background_image.height.to_f)
+		}
+		@cluster_manager          = ClusterManager.new
 	end
 
 	def init_game
@@ -63,8 +65,8 @@ class Game < Gosu::Window
 	def get_canvas_offset target = :all
 		#TODO:
 		## Add offsets here when necessary
-		target = :x  if (target == :width)
-		target = :y  if (target == :height)
+		target = :x            if (target == :width)
+		target = :y            if (target == :height)
 		offset = { x: 0, y: 0 }
 		return offset[target]  if (offset[target])
 		return {
@@ -74,8 +76,14 @@ class Game < Gosu::Window
 		return nil
 	end
 
-	def get_z_index
-		return @background_z_index
+	def get_z_index target = :all
+		return @background_z_index        if (target == :background)
+		return @background_image_z_index  if (target == :image)
+		return {
+			background: @background_z_index,
+			image:      @background_image_z_index
+		}                                 if (target == :all)
+		return nil
 	end
 
 	def get_fort
@@ -114,6 +122,7 @@ class Game < Gosu::Window
 	def draw
 		return  unless (is_running?)
 		draw_background
+		draw_background_image
 		get_fort.draw
 		get_cluster_manager.draw
 		#TODO: REMOVE
@@ -126,7 +135,14 @@ class Game < Gosu::Window
 			0, 0,
 			size[:width], size[:height],
 			@colors[:background],
-			get_z_index
+			get_z_index(:background)
+		)
+	end
+
+	def draw_background_image
+		@background_image.draw(
+			0, 0, get_z_index(:image),
+			@background_image_scale[:x], @background_image_scale[:y]
 		)
 	end
 
@@ -152,9 +168,10 @@ class Game < Gosu::Window
 	end
 end
 
-SETTINGS  = Settings.new
-RESOURCES = get_resources
-GAME      = Game.new
+SETTINGS   = Settings.new
+RESOURCES  = get_resources
+DIFFICULTY = DifficultyManager.new
+GAME       = Game.new
 GAME.init_game
 LOGGER.info 'Game started'
 GAME.show
