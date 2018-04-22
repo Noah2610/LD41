@@ -9,6 +9,22 @@ game:
     background:             0xff_cccccc
   background_z_index:       0
   background_image_z_index: 5
+  valid_prompt_keys:
+    - A
+    - S
+    - D
+    - F
+    - H
+    - J
+    - K
+    - L
+    - Q
+    - W
+    - E
+    - R
+    - U
+    - I
+    - O
 
 instance_defaults:
   z_index:  50

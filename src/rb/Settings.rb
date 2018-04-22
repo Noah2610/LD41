@@ -45,7 +45,7 @@ class Settings
 	end
 
 	def get_available_prompt_keys
-		return AVAILABLE_PROMPT_KEYS
+		return game(:valid_prompt_keys).map { |x| x.upcase }
 	end
 
 	def valid_prompt_key? char
