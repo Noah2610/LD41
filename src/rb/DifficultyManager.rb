@@ -1,7 +1,7 @@
 class DifficultyManager
 	def initialize
-		@base = SETTINGS.difficulty :base
-		@speed_multiplier_increase_step = SETTINGS.difficulty :speed_multiplier_increase_step
+		@base                        = SETTINGS.difficulty :base
+		@speed_multiplier_increments = SETTINGS.difficulty :speed_multiplier_increments
 	end
 
 	def get_speed_multiplier target = :all
@@ -12,7 +12,7 @@ class DifficultyManager
 
 	def increase_speed_multiplier
 		@base[:speed_multiplier].keys.each do |key|
-			@base[:speed_multiplier][key] += @speed_multiplier_increase_step[key]
+			@base[:speed_multiplier][key] += @speed_multiplier_increments[key]
 		end
 	end
 
