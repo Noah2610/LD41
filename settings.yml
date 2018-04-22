@@ -22,7 +22,7 @@ enemies:
       width:  32
       height: 48
     z_index:  50
-    move_step:
+    speed:
       x:      4
       y:      0
     damage:   10
@@ -43,7 +43,7 @@ enemies:
         x:          2
         y:          2
   normal:
-    move_step:
+    speed:
       x:            4
       y:            0.0
     damage:         10
@@ -65,8 +65,8 @@ fort:
     width:              240
     height:             500
   z_index:              10
-  health:               99000
-  max_health:           99000
+  health:               100
+  max_health:           100
   health_bar:
     relative_position:
       x:                0.5

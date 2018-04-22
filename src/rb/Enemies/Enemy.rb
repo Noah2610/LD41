@@ -15,8 +15,13 @@ module Enemies
 			@size             = args[:size]     || enemy_defaults[:size]
 			@z_index          = args[:z] || args[:z_index] || enemy_defaults[:z_index]
 			@align            = :center
-			@move_step        = enemy_defaults[:move_step]
+			@speed            = args[:speed] || enemy_defaults[:speed]
+			@speed = {
+				x: @speed,
+				y: 0.0
+			}  unless (@speed.is_a? Hash)
 			@damage           = enemy_defaults[:damage]
+			@side             = ([:left, :right].include? args[:side]) ? args[:side] : :left
 			@cluster          = args[:cluster]
 			@spawn_delay      = args[:delay]    || 0.0
 			@spawned          = false
@@ -48,7 +53,7 @@ module Enemies
 		end
 
 		def get_side
-			@cluster.get_side
+			return @side
 		end
 
 		def spawned?
@@ -135,14 +140,14 @@ module Enemies
 			end
 		end
 
-		def move_x step = @move_step[:x]
-			step = get_polarity_for_side step
-			@position[:x] += step
+		def move_x speed = @speed[:x]
+			speed = get_polarity_for_side speed
+			@position[:x] += speed
 		end
 
-		def move_y step = @move_step[:y]
-			step = get_polarity_for_side step
-			@position[:y] += step
+		def move_y speed = @speed[:y]
+			speed = get_polarity_for_side speed
+			@position[:y] += speed
 		end
 
 		def get_polarity_for_side num

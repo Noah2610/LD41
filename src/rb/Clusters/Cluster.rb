@@ -1,10 +1,9 @@
-### A Cluster contains Enemies.
-### It controls the spawning of them.
+## A Cluster contains Enemies.
+## It controls the spawning of them.
 
 module Clusters
 	class Cluster
 		def initialize args = {}
-			@side              ||= ([:left, :right].include? args[:side]) ? args[:side] : :left
 			@enemies           ||= []
 			@spawn_enemies     ||= false
 			@last_time_spawned ||= nil

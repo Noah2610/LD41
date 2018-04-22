@@ -23,11 +23,7 @@ class Game < Gosu::Window
 	def init_game
 		@running = true
 		set_fort
-		@clusters << Clusters::Rapid.new(
-			side: :left
-		)         << Clusters::Rapid.new(
-			side: :right
-		)
+		@clusters << Clusters::Rapid.new
 		init_clusters
 	end
 

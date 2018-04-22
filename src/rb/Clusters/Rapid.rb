@@ -2,24 +2,16 @@ module Clusters
 	class Rapid < Cluster
 		def initialize args = {}
 			super
-			@enemies = [
-				Enemies::Normal.new(
+			10.times do |n|
+				side = :left   if (n % 2 == 0)
+				side = :right  if (n % 2 != 0)
+				@enemies << Enemies::Normal.new(
 					cluster: self,
-					delay:   0.0
-				),
-				Enemies::Normal.new(
-					cluster: self,
-					delay:   0.5
-				),
-				Enemies::Normal.new(
-					cluster: self,
-					delay:   1.0
-				),
-				Enemies::Normal.new(
-					cluster: self,
-					delay:   0.5
+					side:    side,
+					speed:   6,
+					delay:   0.25
 				)
-			]
+			end
 		end
 	end
 end

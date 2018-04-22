@@ -27,5 +27,5 @@ DIR = {
 Dir.mkdir DIR[:log]  unless (File.directory? DIR[:log])
 LOGFILE = File.join DIR[:log], 'development.log'
 
-require File.join DIR[:misc], 'require_files'
-require File.join DIR[:rb],   'Game'
+require File.join DIR[:misc],  'require_files'
+require File.join DIR[:rb],    'Game'
