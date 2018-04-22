@@ -3,9 +3,6 @@ class Game < Gosu::Window
 		setup
 		super @size[:width], @size[:height]
 		self.caption = SETTINGS.window(:title)
-		#TODO: REMOVE
-		@font = Gosu::Font.new 24
-		#self.update_interval = 30.0
 	end
 
 	# Called upon instantiation
@@ -93,6 +90,7 @@ class Game < Gosu::Window
 	def button_down key_id
 		#char = Gosu.button_id_to_char key_id
 		exit  if (key_id == Gosu::KB_ESCAPE)
+
 	end
 
 	def needs_cursor?
@@ -144,7 +142,7 @@ class Game < Gosu::Window
 			@colors[:background],
 			100
 		)
-		@font.draw_rel(
+		RESOURCES[:fonts][:debug].draw_rel(
 			Gosu.fps,
 			pos[:x] * 0.5, pos[:y] * 0.5, 110,
 			0.5, 0.5,

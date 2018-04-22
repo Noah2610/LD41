@@ -8,7 +8,8 @@ module Clusters
 				@enemies << Enemies::Normal.new(
 					cluster: self,
 					side:    side,
-					delay:   0.25
+					keys:    1,
+					delay:   1
 				)
 			end
 		end

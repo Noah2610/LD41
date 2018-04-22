@@ -26,6 +26,7 @@ module Enemies
 			@can_collide_with = [
 				GAME.get_fort
 			]
+			@amount_of_keys   = args[:keys] || 1
 			setup_prompt
 		end
 
@@ -39,7 +40,8 @@ module Enemies
 
 		def setup_prompt
 			@prompt = Prompt.new(
-				enemy: self
+				enemy:          self,
+				amount_of_keys: @amount_of_keys
 			)
 		end
 

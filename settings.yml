@@ -52,7 +52,7 @@ enemies:
       width:        32
       height:       48
     speed:
-      x:            4
+      x:            2
       y:            0.0
     damage:         10
     health:         10
@@ -82,9 +82,11 @@ prompt:
       foreground:       0xff_2a74fc
       foreground_shift: 0xff_ff74fc
   z_indexes:
-    background:       60
-    foreground:       65
-  height:             16
+    background:         60
+    foreground:         65
+  size:
+    height:             16
+    width:              64
 
 fort:
   size:
@@ -112,7 +114,7 @@ fort:
 
 lines:
   x_offset: 128
-  width:    32
+  width:    64
   color:    0x99_444444
   z_index:  40
 

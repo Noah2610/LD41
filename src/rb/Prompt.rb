@@ -2,14 +2,6 @@ class Prompt < Instance
 	include Health
 	include HealthBar
 
-	def self.get_available_keys
-		return (65 .. 90).map do |n|
-			next n.chr
-		end
-	end
-
-	AVAILABLE_KEYS = get_available_keys
-
 	def initialize args = {}
 		setup args
 		super
@@ -17,14 +9,12 @@ class Prompt < Instance
 
 	def setup args = {}
 		@enemy             = args[:enemy]
+		@amount_of_keys    = args[:amount_of_keys] || 1
 		@align             = get_enemy.get_align
 		@active            = false
+		@font              = RESOURCES[:fonts][:prompt]
 		prompt_settings    = SETTINGS.prompt
-		height             = (!!prompt_settings[:height]) ? prompt_settings[:height] : 24
-		@size = {
-			width:  get_enemy.get_size(:width),
-			height: height
-		}
+		@size              = prompt_settings[:size]
 		@position_y_offset = prompt_settings[:y_offset]   if (!!prompt_settings[:y_offset])
 		@colors            = prompt_settings[:colors]     if (!!prompt_settings[:colors])
 		@z_indexes         = prompt_settings[:z_indexes]  if (!!prompt_settings[:z_indexes])
@@ -49,10 +39,12 @@ class Prompt < Instance
 	end
 
 	def set_random_keys
-		#TODO: Get amount of keys from DifficultyManager
+		#TODO:
+		## Get amount of keys from DifficultyManager
+		## Maybe decide amount of keys in Cluster, from where Enemy is spawned?
 		@keys = []
-		rand(1 .. 4).times do
-			@keys << AVAILABLE_KEYS.sample
+		@amount_of_keys.times do
+			@keys << SETTINGS.get_available_prompt_keys.sample
 		end
 	end
 
@@ -95,6 +87,7 @@ class Prompt < Instance
 
 	def draw
 		draw_background
+		draw_keys
 		draw_health_bar
 	end
 
@@ -128,5 +121,23 @@ class Prompt < Instance
 		return @colors[:active]    if (active?)
 		return @colors[:inactive]  if (inactive?)
 		return nil
+	end
+
+	def draw_keys
+		text     = get_text_from_keys
+		position = get_position
+		z_index  = get_z_index :foreground
+		color    = get_color   :foreground
+		@font.draw_rel(
+			text,
+			position[:x], position[:y], z_index,
+			0.5, 0.5,
+			1, 1,
+			color
+		)
+	end
+
+	def get_text_from_keys
+		return get_keys.join('')
 	end
 end

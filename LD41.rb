@@ -20,6 +20,7 @@ DIR = {
 	clusters: File.join(ROOT, 'src/rb/Clusters'),
 	images:   File.join(ROOT, 'src/Art/Images'),
 	audio:    File.join(ROOT, 'src/Art/Audio'),
+	fonts:    File.join(ROOT, 'src/Fonts'),
 	settings: File.join(ROOT, 'settings.yml'),
 	log:      File.join(ROOT, 'log')
 }

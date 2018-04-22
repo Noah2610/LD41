@@ -1,4 +1,12 @@
 class Settings
+	def self.get_available_prompt_keys
+		return (65 .. 90).map do |n|
+			next n.chr
+		end
+	end
+
+	AVAILABLE_PROMPT_KEYS = get_available_prompt_keys
+
 	def initialize file = DIR[:settings]
 		set_filepath file
 		load_settings
@@ -34,5 +42,13 @@ class Settings
 
 	def method_missing meth, *args
 		return get_setting meth, args[0]
+	end
+
+	def get_available_prompt_keys
+		return AVAILABLE_PROMPT_KEYS
+	end
+
+	def valid_prompt_key? char
+		return get_available_prompt_keys.include? char.upcase
 	end
 end

@@ -24,7 +24,7 @@ class Line < Instance
 	end
 
 	def handle_collision
-		@can_collide_with  = GAME.get_cluster_manager.get_enemies
+		@can_collide_with = GAME.get_cluster_manager.get_enemies
 		get_colliding.each   &:deactivate_prompt
 		if (collision?)
 			get_colliding.each &:activate_prompt
