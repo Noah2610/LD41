@@ -16,7 +16,7 @@ class Settings
 		if (File.file? filepath)
 			@filepath = filepath
 		else
-			LOGGER.warning "#{DIR[:settings]} file doesn't exist!"
+			LOGGER.warn "#{DIR[:settings]} file doesn't exist!"
 		end
 	end
 
