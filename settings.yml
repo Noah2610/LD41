@@ -37,16 +37,16 @@ enemies:
       y:            0.0
     relative_size:
       width:        1.0
-      height:       0.1
+      height:       0.25
     colors:
       foreground:   0xff_ff0000
-      background:   0xff_888888
+      background:   0xff_444444
     z_indexes:
       background:   60
       foreground:   70
     border_padding:
-      x:            2
-      y:            2
+      x:            1
+      y:            1
   normal:
     size:
       width:        32

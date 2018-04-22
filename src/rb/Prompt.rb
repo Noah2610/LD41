@@ -1,4 +1,7 @@
 class Prompt < Instance
+	include Health
+	include HealthBar
+
 	def self.get_available_keys
 		return (65 .. 90).map do |n|
 			next n.chr
@@ -24,7 +27,24 @@ class Prompt < Instance
 		@position_y_offset = prompt_settings[:y_offset]   if (!!prompt_settings[:y_offset])
 		@colors            = prompt_settings[:colors]     if (!!prompt_settings[:colors])
 		@z_indexes         = prompt_settings[:z_indexes]  if (!!prompt_settings[:z_indexes])
+		setup_health
 		set_random_keys
+	end
+
+	def setup_health
+		@max_health = get_enemy.get_max_health
+		@health     = get_enemy.get_health
+		setup_health_bar
+	end
+
+	def setup_health_bar
+		health_bar_settings =         SETTINGS.enemies(:health_bar)
+		set_health_bar_position       health_bar_settings[:relative_position]
+		set_health_bar_size           health_bar_settings[:relative_size]
+		set_health_bar_colors         health_bar_settings[:colors]
+		set_health_bar_z_indexes      health_bar_settings[:z_indexes]
+		set_health_bar_border_padding health_bar_settings[:border_padding]
+		set_health_bar_align          :bottom_left
 	end
 
 	def set_random_keys
@@ -58,6 +78,7 @@ class Prompt < Instance
 
 	def draw
 		draw_background
+		draw_health_bar
 	end
 
 	def draw_background

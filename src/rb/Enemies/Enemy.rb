@@ -1,8 +1,6 @@
 module Enemies
 	class Enemy < Instance
 		include Collision
-		include Health
-		include HealthBar
 
 		def initialize args = {}
 			setup args
@@ -28,24 +26,15 @@ module Enemies
 			@can_collide_with = [
 				GAME.get_fort
 			]
-			setup_health
 			setup_prompt
 		end
 
-		def setup_health
-			@max_health = SETTINGS.enemies(:default)[:max_health] || 100
-			@health     = SETTINGS.enemies(:default)[:health]     || 100
-			setup_health_bar
+		def get_health
+			return SETTINGS.enemies(:default)[:health]     || 100
 		end
 
-		def setup_health_bar
-			health_bar_settings =         SETTINGS.enemies(:health_bar)
-			set_health_bar_position       health_bar_settings[:relative_position]
-			set_health_bar_size           health_bar_settings[:relative_size]
-			set_health_bar_colors         health_bar_settings[:colors]
-			set_health_bar_z_indexes      health_bar_settings[:z_indexes]
-			set_health_bar_border_padding health_bar_settings[:border_padding]
-			set_health_bar_align          :bottom_left
+		def get_max_health
+			return SETTINGS.enemies(:default)[:max_health] || 100
 		end
 
 		def setup_prompt
@@ -103,7 +92,7 @@ module Enemies
 
 		def get_spawn_position_y
 			position_y_from_cluster = get_cluster.get_spawn_position_y_for_enemy
-			health_bar_height       = get_health_bar_size(:height)
+			health_bar_height       = get_prompt.get_health_bar_size(:height)
 			top_boundary            = position_y_from_cluster - get_prompt.get_size(:height) - get_prompt.get_position_y_offset - health_bar_height
 			bottom_boundary         = position_y_from_cluster + health_bar_height
 			return ((get_size(:height).to_f / 2.0) + health_bar_height).round       if (top_boundary    < 0)
@@ -182,7 +171,6 @@ module Enemies
 
 		def draw
 			super
-			draw_health_bar
 			draw_prompt
 		end
 
