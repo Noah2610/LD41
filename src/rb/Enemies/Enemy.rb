@@ -120,9 +120,11 @@ module Enemies
 		end
 
 		def activate_prompt
+			get_prompt.activate!
 		end
 
 		def deactivate_prompt
+			get_prompt.deactivate!
 		end
 
 		def update

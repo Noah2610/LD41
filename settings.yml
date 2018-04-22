@@ -73,9 +73,14 @@ enemies:
 prompt:
   y_offset:           16
   colors:
-    background:       0xff_888888
-    foreground:       0xff_dddddd
-    foreground_shift: 0xff_ffdddd
+    inactive:
+      background:       0xff_888888
+      foreground:       0x99_dddddd
+      foreground_shift: 0x99_ffdddd
+    active:
+      background:       0xff_666666
+      foreground:       0xff_2a74fc
+      foreground_shift: 0xff_ff74fc
   z_indexes:
     background:       60
     foreground:       65

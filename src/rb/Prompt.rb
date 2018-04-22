@@ -18,6 +18,7 @@ class Prompt < Instance
 	def setup args = {}
 		@enemy             = args[:enemy]
 		@align             = get_enemy.get_align
+		@active            = false
 		prompt_settings    = SETTINGS.prompt
 		height             = (!!prompt_settings[:height]) ? prompt_settings[:height] : 24
 		@size = {
@@ -57,6 +58,22 @@ class Prompt < Instance
 
 	def get_keys
 		return @keys || []
+	end
+
+	def activate!
+		@active = true
+	end
+
+	def deactivate!
+		@active = false
+	end
+
+	def active?
+		return !!@active
+	end
+
+	def inactive?
+		return !active?
 	end
 
 	def update
@@ -101,8 +118,15 @@ class Prompt < Instance
 	end
 
 	def get_color target = :all
-		return @colors[target]     if (!!@colors[target])
-		return @colors             if (target == :all)
+		colors = get_colors_for_activation_state
+		return colors[target]     if (!!colors[target])
+		return colors             if (target == :all)
+		return nil
+	end
+
+	def get_colors_for_activation_state
+		return @colors[:active]    if (active?)
+		return @colors[:inactive]  if (inactive?)
 		return nil
 	end
 end

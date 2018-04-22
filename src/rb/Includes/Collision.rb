@@ -13,10 +13,14 @@ module Collision
 	def check_collision_with? instance
 		this_boundaries  = get_boundaries :left, :right
 		other_boundaries = instance.get_boundaries :left, :right
-		return true  if ( ((this_boundaries[:left]  > other_boundaries[:left])   &&
-											 (this_boundaries[:left]  < other_boundaries[:right])) ||
-											((this_boundaries[:right] > other_boundaries[:left])   &&
-											 (this_boundaries[:right] < other_boundaries[:right])) )
+		return true  if ( ((this_boundaries[:left]  >= other_boundaries[:left])   &&
+											 (this_boundaries[:left]  <= other_boundaries[:right])) ||
+											((this_boundaries[:right] >= other_boundaries[:left])   &&
+											 (this_boundaries[:right] <= other_boundaries[:right])) ||
+											((this_boundaries[:left]  >= other_boundaries[:left])   &&
+											 (this_boundaries[:right] <= other_boundaries[:right])) ||
+											((this_boundaries[:left]  <= other_boundaries[:left])   &&
+											 (this_boundaries[:right] >= other_boundaries[:right])) )
 		return false
 	end
 
