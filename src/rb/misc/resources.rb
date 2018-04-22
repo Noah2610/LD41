@@ -5,10 +5,7 @@ RESOURCES = {
 			retro: true
 		),
 		enemies: {
-			normal: Gosu::Image.new(
-				File.join(DIR[:images], 'Enemies/Normal.png'),
-				retro: true
-			)
+			normal: load_images_from_directory(File.join DIR[:images], 'Enemies/Normal')
 		}
 	}
 }

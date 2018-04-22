@@ -3,7 +3,6 @@ module Enemies
 		include Collision
 		include Health
 		include HealthBar
-		include Texture
 
 		def initialize args = {}
 			setup args

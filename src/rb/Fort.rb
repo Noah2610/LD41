@@ -9,11 +9,11 @@ class Fort < Instance
 	end
 
 	def setup
-		@size           = SETTINGS.fort(:size)
-		@position       = GAME.get_center_position
-		@z_index        = SETTINGS.fort(:z_index)
-		@align          = :center
-		@image_resource = RESOURCES[:images][:fort]
+		@size     = SETTINGS.fort(:size)
+		@position = GAME.get_center_position
+		@z_index  = SETTINGS.fort(:z_index)
+		@align    = :center
+		@image    = RESOURCES[:images][:fort]
 		setup_health
 	end
 
