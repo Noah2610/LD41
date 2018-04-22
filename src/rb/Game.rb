@@ -7,6 +7,7 @@ class Game < Gosu::Window
 
 	# Called upon instantiation
 	def setup
+		@tick                     = 0
 		@size                     = SETTINGS.window(:size).keys_to_sym
 		@colors                   = SETTINGS.game(:colors)
 		@background_z_index       = SETTINGS.game(:background_z_index)
@@ -109,6 +110,16 @@ class Game < Gosu::Window
 		return  unless (is_running?)
 		get_fort.update
 		get_cluster_manager.update
+		SCORE.update
+		increment_tick
+	end
+
+	def increment_tick
+		@tick += 1
+	end
+
+	def get_tick
+		return @tick
 	end
 
 	def get_cluster_manager
@@ -125,6 +136,7 @@ class Game < Gosu::Window
 		draw_background_image
 		get_fort.draw
 		get_cluster_manager.draw
+		SCORE.draw
 		#TODO: REMOVE
 		draw_fps
 	end
@@ -167,12 +179,3 @@ class Game < Gosu::Window
 		)
 	end
 end
-
-SETTINGS   = Settings.new
-RESOURCES  = get_resources
-DIFFICULTY = DifficultyManager.new
-GAME       = Game.new
-GAME.init_game
-LOGGER.info 'Game started'
-GAME.show
-LOGGER.info 'Exitted naturally'

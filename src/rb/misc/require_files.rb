@@ -8,6 +8,8 @@ require File.join DIR[:misc],         'resources'
 
 require File.join DIR[:rb],           'DifficultyManager'
 
+require File.join DIR[:rb],           'Score'
+
 # Includes (modules)
 require_files DIR[:includes]
 

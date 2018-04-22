@@ -134,4 +134,17 @@ difficulty:
   speed_multiplier_increase_step:
     x:   0.25
     y:   0.0
+
+score:
+  font_size:    32
+  text_padding: 4
+  colors:
+    foreground: 0x66_000000
+    background: 0x66_cccccc
+  z_indexes:
+    foreground: 110
+    background: 100
+  background_size:
+    width:  128
+    height: 32
 ...
