@@ -6,8 +6,9 @@ window:
 
 game:
   colors:
-    background:       0xff_cccccc
-  background_z_index: 0
+    background:             0xff_cccccc
+  background_z_index:       0
+  background_image_z_index: 5
 
 instance_defaults:
   z_index:  50
@@ -52,7 +53,7 @@ enemies:
       width:        32
       height:       48
     speed:
-      x:            2
+      x:            3
       y:            0.0
     damage:         1
     health:         1
@@ -60,15 +61,17 @@ enemies:
     animation:
       delay:        0.5
       image_order:
-        - 0
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-        - 6
-        - 7
-        - 8
+        - Small
+      #image_order:
+      #  - 0
+      #  - 1
+      #  - 2
+      #  - 3
+      #  - 4
+      #  - 5
+      #  - 6
+      #  - 7
+      #  - 8
 
 prompt:
   y_offset:           16
@@ -122,4 +125,13 @@ lines:
 clusters:
   defaults:
     spawn_position_y_min: 64
+
+difficulty:
+  base:
+    speed_multiplier:
+      x: 1.0
+      y: 1.0
+  speed_multiplier_increase_step:
+    x:   0.25
+    y:   0.0
 ...

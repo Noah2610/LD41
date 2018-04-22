@@ -27,6 +27,7 @@ module Enemies
 				GAME.get_fort
 			]
 			@amount_of_keys   = args[:keys] || 1
+			@speed_multiplier = DIFFICULTY.get_speed_multiplier
 			setup_prompt
 		end
 
@@ -162,12 +163,14 @@ module Enemies
 			end
 		end
 
-		def move_x speed = @speed[:x]
+		def move_x
+			speed = @speed[:x] * @speed_multiplier[:x]
 			speed = get_polarity_for_side speed
 			@position[:x] += speed
 		end
 
-		def move_y speed = @speed[:y]
+		def move_y
+			speed = @speed[:y] * @speed_multiplier[:y]
 			speed = get_polarity_for_side speed
 			@position[:y] += speed
 		end
