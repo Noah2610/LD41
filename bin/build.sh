@@ -5,6 +5,7 @@ entry_file='./LD41.rb'
 gemfile='./Gemfile'
 output_file='./LD41.exe'
 IFS=$'\n'
-other_files=($( find ./src -type f ))
+other_files=('./settings.yml')
+other_files_find=($( find ./src -type f ))
 
-ocra $entry_file ${other_files[@]} --windows --gemfile $gemfile --output $output_file
+ocra $entry_file ${other_files[@]} ${other_files_find[@]} --windows --gemfile $gemfile --output $output_file
