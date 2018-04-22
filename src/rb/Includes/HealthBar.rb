@@ -1,3 +1,6 @@
+## This module should definitely be a class, inheriting from Instance...
+## Now it's basically a copy/pasted Instance with custom stuff
+
 module HealthBar
 	def set_health_bar_position position
 		@health_bar_position_relative = position

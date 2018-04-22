@@ -1,5 +1,5 @@
 module Enemies
-	class Enemy < Entity
+	class Enemy < Instance
 		include Collision
 		include Health
 		include HealthBar
@@ -26,10 +26,10 @@ module Enemies
 			@spawn_delay      = args[:delay]    || 0.0
 			@spawned          = false
 			@can_collide_with = [
-				GAME.get_fort,
-				# Line
+				GAME.get_fort
 			]
 			setup_health
+			setup_prompt
 		end
 
 		def setup_health
@@ -46,6 +46,12 @@ module Enemies
 			set_health_bar_z_indexes      health_bar_settings[:z_indexes]
 			set_health_bar_border_padding health_bar_settings[:border_padding]
 			set_health_bar_align          :bottom_left
+		end
+
+		def setup_prompt
+			#@prompt = Prompt.new(
+			#	enemy: self,
+			#)
 		end
 
 		def get_cluster
@@ -120,18 +126,24 @@ module Enemies
 			return @damage
 		end
 
+		def activate_prompt
+		end
+
+		def deactivate_prompt
+		end
+
 		def update
 			super
 			move
 		end
 
 		def move
-			check_collision
+			handle_collision
 			move_x
 			move_y
 		end
 
-		def check_collision
+		def handle_collision
 			if (collision?)
 				if (in_collision_with? GAME.get_fort)
 					attack_fort

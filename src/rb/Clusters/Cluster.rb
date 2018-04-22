@@ -28,10 +28,14 @@ module Clusters
 			return @side
 		end
 
+		def get_enemies
+			return @enemies
+		end
+
 		def update
 			if (spawn_enemies?)
 				check_and_spawn_next_enemy
-				@enemies.each do |enemy|
+				get_enemies.each do |enemy|
 					enemy.update  if (enemy.spawned?)
 				end
 			end
@@ -42,12 +46,12 @@ module Clusters
 		end
 
 		def needs_to_spawn_enemy?
-			return @enemies.any? &:not_spawned?
+			return get_enemies.any? &:not_spawned?
 		end
 
 		def check_and_spawn_next_enemy
 			return  unless (needs_to_spawn_enemy?)
-			enemy_to_spawn = @enemies.detect do |enemy|
+			enemy_to_spawn = get_enemies.detect do |enemy|
 				next enemy.not_spawned?
 			end
 			spawn_enemy_at = @last_time_spawned + enemy_to_spawn.get_delay
@@ -79,7 +83,7 @@ module Clusters
 		end
 
 		def active?
-			return true  if (@enemies.any?)
+			return true  if (get_enemies.any?)
 		end
 
 		def destroy_enemy enemy
@@ -87,13 +91,13 @@ module Clusters
 		end
 
 		def clean
-			@enemies.each do |enemy|
+			get_enemies.each do |enemy|
 				destroy_enemy enemy
 			end
 		end
 
 		def draw
-			@enemies.each do |enemy|
+			get_enemies.each do |enemy|
 				enemy.draw  if (enemy.spawned?)
 			end
 		end

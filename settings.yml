@@ -10,11 +10,14 @@ game:
   background_z_index: 0
 
 instance_defaults:
-  z_index: 0
-  color:   0xff_000000
-
-entity_defaults:
-  z_index: 50
+  z_index:  50
+  color:    0xff_000000
+  position:
+    x:      0
+    y:      0
+  size:
+    width:  0
+    height: 0
 
 enemies:
   defaults:
@@ -83,6 +86,12 @@ fort:
     border_padding:
       x:                4
       y:                4
+
+lines:
+  position_offset: 128
+  width:           32
+  color:           0x99_444444
+  z_index:         40
 
 clusters:
   defaults:

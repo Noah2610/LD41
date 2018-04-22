@@ -53,6 +53,12 @@ class ClusterManager
 		@clusters << new_cluster
 	end
 
+	def get_enemies
+		return get_active_clusters.map do |cluster|
+			next cluster.get_enemies
+		end .flatten
+	end
+
 	def update
 		clean_clusters
 		add_new_cluster  unless (has_clusters?)

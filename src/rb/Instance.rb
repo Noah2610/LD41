@@ -1,9 +1,9 @@
 class Instance
 	def initialize args = {}
-		@position ||= args[:position]
-		@size     ||= args[:size]
+		@position ||= args[:position]            || SETTINGS.instance_defaults(:position)
+		@size     ||= args[:size]                || SETTINGS.instance_defaults(:size)
 		@z_index  ||= args[:z] || args[:z_index] || SETTINGS.instance_defaults(:z_index)
-		@color    ||= args[:color] || SETTINGS.instance_defaults(:color)
+		@color    ||= args[:color]               || SETTINGS.instance_defaults(:color)
 		@align    ||= :top_left
 	end
 
@@ -147,5 +147,11 @@ class Instance
 	end
 
 	def draw
+		#NOTE
+		## This method will be called for every Instance, including those with textures.
+		## So DO NOT put fallbacks (like drawing a rectangle) here, as they will also be drawn.
+		## The same goes for the update method above.
+		## So this method needs to be overwritten some how, best by creating a specific module,
+		## with a draw (and update) method.
 	end
 end

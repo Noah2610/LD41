@@ -5,7 +5,7 @@ class Fort < Instance
 
 	def initialize args = {}
 		setup
-		super args
+		super
 	end
 
 	def setup
@@ -15,6 +15,7 @@ class Fort < Instance
 		@align    = :center
 		@image    = RESOURCES[:images][:fort]
 		setup_health
+		setup_lines
 	end
 
 	def setup_health
@@ -33,6 +34,30 @@ class Fort < Instance
 		set_health_bar_align          :center
 	end
 
+	def setup_lines
+		offset_x = SETTINGS.lines(:position_offset)
+		left_position = {
+			x: (get_left_boundary - offset_x),
+			y: get_position(:y)
+		}
+		right_position = {
+			x: (get_right_boundary + offset_x),
+			y: get_position(:y)
+		}
+		@lines = [
+			Line.new(
+				position: left_position
+			),
+			Line.new(
+				position: right_position
+			)
+		]
+	end
+
+	def get_lines
+		return @lines || []
+	end
+
 	def damage_by amount
 		decrease_health_by amount
 	end
@@ -43,10 +68,20 @@ class Fort < Instance
 
 	def update
 		super
+		update_lines
+	end
+
+	def update_lines
+		get_lines.each &:update
 	end
 
 	def draw
 		super
 		draw_health_bar
+		draw_lines
+	end
+
+	def draw_lines
+		get_lines.each &:draw
 	end
 end

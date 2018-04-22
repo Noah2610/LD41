@@ -23,4 +23,8 @@ module Collision
 	def in_collision_with? target
 		return @in_collision_with.include? target
 	end
+
+	def get_colliding
+		return @in_collision_with || []
+	end
 end

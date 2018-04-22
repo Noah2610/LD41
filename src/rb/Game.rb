@@ -22,12 +22,8 @@ class Game < Gosu::Window
 
 	def init_game
 		@running = true
-		set_fort
-		get_cluster_manager.init
-	end
-
-	def set_fort
 		@fort = Fort.new
+		get_cluster_manager.init
 	end
 
 	def get_center_position target = :all
