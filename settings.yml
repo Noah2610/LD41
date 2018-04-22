@@ -22,34 +22,41 @@ instance_defaults:
 enemies:
   defaults:
     size:
-      width:  32
-      height: 48
-    z_index:  50
+      width:        32
+      height:       48
+    z_index:        50
     speed:
-      x:      4
-      y:      0
-    damage:   10
-    health_bar:
-      relative_position:
-        x:          0.0
-        y:          0.0
-      relative_size:
-        width:      1.0
-        height:     0.1
-      colors:
-        foreground: 0xff_ff0000
-        background: 0xff_888888
-      z_indexes:
-        background: 60
-        foreground: 70
-      border_padding:
-        x:          2
-        y:          2
+      x:            4
+      y:            0
+    damage:         10
+    health:         10
+    max_health:     10
+  health_bar:
+    relative_position:
+      x:            0.0
+      y:            0.0
+    relative_size:
+      width:        1.0
+      height:       0.1
+    colors:
+      foreground:   0xff_ff0000
+      background:   0xff_888888
+    z_indexes:
+      background:   60
+      foreground:   70
+    border_padding:
+      x:            2
+      y:            2
   normal:
+    size:
+      width:        32
+      height:       48
     speed:
       x:            4
       y:            0.0
     damage:         10
+    health:         10
+    max_health:     10
     animation:
       delay:        0.5
       image_order:
@@ -62,6 +69,17 @@ enemies:
         - 6
         - 7
         - 8
+
+prompt:
+  y_offset:           16
+  colors:
+    background:       0xff_888888
+    foreground:       0xff_dddddd
+    foreground_shift: 0xff_ffdddd
+  z_indexes:
+    background:       60
+    foreground:       65
+  height:             16
 
 fort:
   size:
@@ -88,10 +106,10 @@ fort:
       y:                4
 
 lines:
-  position_offset: 128
-  width:           32
-  color:           0x99_444444
-  z_index:         40
+  x_offset: 128
+  width:    32
+  color:    0x99_444444
+  z_index:  40
 
 clusters:
   defaults:

@@ -35,7 +35,7 @@ class Fort < Instance
 	end
 
 	def setup_lines
-		offset_x = SETTINGS.lines(:position_offset)
+		offset_x = SETTINGS.lines(:x_offset)
 		left_position = {
 			x: (get_left_boundary - offset_x),
 			y: get_position(:y)

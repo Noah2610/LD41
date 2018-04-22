@@ -18,6 +18,8 @@ require_files DIR[:clusters], except: 'Cluster'
 
 require File.join DIR[:rb],           'ClusterManager'
 
+require File.join DIR[:rb],           'Prompt'
+
 require File.join DIR[:enemies],      'Enemy'
 require_files DIR[:enemies], except:  'Enemy'
 

@@ -18,7 +18,7 @@ class Instance
 	end
 
 	def get_position_to_draw
-		case @align
+		case get_align
 		when :center
 			return get_position_to_draw_for_center
 		when :top_left
@@ -141,6 +141,10 @@ class Instance
 
 	def get_right_boundary
 		return get_position_to_draw[:x] + get_size(:width)
+	end
+
+	def get_align
+		return @align
 	end
 
 	def update

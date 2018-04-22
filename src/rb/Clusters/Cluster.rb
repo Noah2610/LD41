@@ -7,6 +7,7 @@ module Clusters
 			@enemies           ||= []
 			@spawn_enemies     ||= false
 			@last_time_spawned ||= nil
+			@destroy_queue       = []
 			set_spawn_position_y_for_enemy
 		end
 
@@ -33,11 +34,18 @@ module Clusters
 		end
 
 		def update
+			handle_destroy_queue
 			if (spawn_enemies?)
 				check_and_spawn_next_enemy
 				get_enemies.each do |enemy|
 					enemy.update  if (enemy.spawned?)
 				end
+			end
+		end
+
+		def handle_destroy_queue
+			@destroy_queue.each do |enemy|
+				@enemies.delete enemy
 			end
 		end
 
@@ -87,7 +95,11 @@ module Clusters
 		end
 
 		def destroy_enemy enemy
-			@enemies.delete enemy
+			queue_destroy_enemy enemy
+		end
+
+		def queue_destroy_enemy enemy
+			@destroy_queue << enemy
 		end
 
 		def clean

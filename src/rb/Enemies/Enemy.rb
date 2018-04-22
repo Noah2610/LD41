@@ -15,7 +15,7 @@ module Enemies
 			@size             = args[:size]     || enemy_defaults[:size]
 			@z_index          = args[:z] || args[:z_index] || enemy_defaults[:z_index]
 			@align            = :center
-			@speed            = args[:speed] || enemy_defaults[:speed]
+			@speed            = args[:speed]    || enemy_defaults[:speed]
 			@speed = {
 				x: @speed,
 				y: 0.0
@@ -39,7 +39,7 @@ module Enemies
 		end
 
 		def setup_health_bar
-			health_bar_settings =         SETTINGS.enemies(:defaults)[:health_bar]
+			health_bar_settings =         SETTINGS.enemies(:health_bar)
 			set_health_bar_position       health_bar_settings[:relative_position]
 			set_health_bar_size           health_bar_settings[:relative_size]
 			set_health_bar_colors         health_bar_settings[:colors]
@@ -49,9 +49,13 @@ module Enemies
 		end
 
 		def setup_prompt
-			#@prompt = Prompt.new(
-			#	enemy: self,
-			#)
+			@prompt = Prompt.new(
+				enemy: self
+			)
+		end
+
+		def get_prompt
+			return @prompt
 		end
 
 		def get_cluster
@@ -72,10 +76,10 @@ module Enemies
 
 		def spawn
 			@spawned = true
-			set_position
+			set_spawn_position
 		end
 
-		def set_position
+		def set_spawn_position
 			@position = get_spawn_position
 		end
 
@@ -100,7 +104,7 @@ module Enemies
 		def get_spawn_position_y
 			position_y_from_cluster = get_cluster.get_spawn_position_y_for_enemy
 			health_bar_height       = get_health_bar_size(:height)
-			top_boundary            = position_y_from_cluster - health_bar_height
+			top_boundary            = position_y_from_cluster - get_prompt.get_size(:height) - get_prompt.get_position_y_offset - health_bar_height
 			bottom_boundary         = position_y_from_cluster + health_bar_height
 			return ((get_size(:height).to_f / 2.0) + health_bar_height).round       if (top_boundary    < 0)
 			return (GAME.get_size(:height) - (get_size(:height).to_f / 2.0)).round  if (bottom_boundary > GAME.get_size(:height))
@@ -135,6 +139,7 @@ module Enemies
 		def update
 			super
 			move
+			update_prompt
 		end
 
 		def move
@@ -171,9 +176,18 @@ module Enemies
 			end
 		end
 
+		def update_prompt
+			get_prompt.update
+		end
+
 		def draw
 			super
 			draw_health_bar
+			draw_prompt
+		end
+
+		def draw_prompt
+			get_prompt.draw
 		end
 	end
 end
