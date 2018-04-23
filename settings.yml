@@ -203,6 +203,10 @@ clusters:
     delay:                    0.5
   alternate:
     delay:                    0.5
+  slow:
+    delays:
+      normal:                 1.0
+      big:                    1.0
 
 difficulty:
   base:
