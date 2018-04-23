@@ -16,6 +16,9 @@ def get_resources
 				zombie: load_images_from_directory(File.join DIR[:images], 'drive/Zombie')
 			}
 		},
+		audio: {
+			beats:    load_audio_from_directory(File.join DIR[:audio], 'Beats')
+		},
 		fonts: {
 			debug:  Gosu::Font.new(
 				24,

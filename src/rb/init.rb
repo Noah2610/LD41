@@ -2,6 +2,7 @@ SETTINGS   = Settings.new
 RESOURCES  = get_resources
 DIFFICULTY = DifficultyManager.new
 SCORE      = Score.new
+AUDIO      = AudioManager.new
 
 GAME       = Game.new
 GAME.init_game
