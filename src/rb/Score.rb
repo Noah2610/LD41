@@ -6,9 +6,10 @@ class Score
 	UPDATE_SCORE_TIME_INTERVAL = 4            # 30 would be about every half second, at 60 fps
 
 	def initialize
-		@score = {
+		@scores = {
 			time:   nil,
-			points: 0
+			points: 0,
+			kills:  0
 		}
 		@start_time      = nil
 		@font            = RESOURCES[:fonts][:score]
@@ -24,7 +25,7 @@ class Score
 
 	def set_score_time
 		return nil  if (@start_time.nil?)
-		@score[:time] = get_time_diff
+		@scores[:time] = get_time_diff
 	end
 
 	def get_time_diff
@@ -123,7 +124,7 @@ class Score
 	end
 
 	def get_score_time
-		return @score[:time]
+		return @scores[:time]
 	end
 
 	def get_color target = :all
@@ -151,11 +152,11 @@ class Score
 	end
 
 	def get_score_points
-		return @score[:points]
+		return @scores[:points]
 	end
 
 	def increase_score_points_by points
-		@score[:points] += get_points_with_difficulty points
+		@scores[:points] += get_points_with_difficulty points
 	end
 	alias :increase_score_by :increase_score_points_by
 
@@ -184,5 +185,13 @@ class Score
 			semantic.sub! word_group[0], word_group[plurality]
 		end
 		return semantic
+	end
+
+	def increase_kill_count amount = 1
+		@scores[:kills] += amount
+	end
+
+	def get_score_kills
+		return @scores[:kills]
 	end
 end

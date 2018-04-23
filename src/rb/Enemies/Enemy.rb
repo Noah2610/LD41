@@ -109,7 +109,7 @@ module Enemies
 		end
 
 		def attack_fort
-			# By default: Damage Fort and kill self
+			# By default: Damage Fort and destroy self
 			GAME.get_fort.damage_by get_damage
 			destroy!
 		end
@@ -126,6 +126,7 @@ module Enemies
 
 		def increase_score
 			SCORE.increase_score_by @points
+			SCORE.increase_kill_count
 		end
 
 		def get_damage

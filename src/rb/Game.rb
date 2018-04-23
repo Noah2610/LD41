@@ -101,10 +101,12 @@ class Game < Gosu::Window
 		puts([
 			'Game Over',
 			'Final Scores:',
-			'  Time survived:',
+			'  Time Survived:',
 			"    #{SCORE.get_semantic_score_time}",
 			'  Points:',
-			"    #{SCORE.get_score_points} Points"
+			"    #{SCORE.get_score_points.round} Points",
+			'  Total Kills:',
+			"    #{SCORE.get_score_kills} Kills"
 		].join("\n"))
 	end
 
