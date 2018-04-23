@@ -38,7 +38,7 @@ def get_resources
 			game_over: {
 				text:     Gosu::Font.new(
 					SETTINGS.game(:fonts)[:game_over_text][:size],
-					name: File.join(DIR[:fonts], 'Ubuntu.ttf')
+					name: File.join(DIR[:fonts], 'Bombardier.ttf')
 				),
 				scores:   Gosu::Font.new(
 					SETTINGS.game(:fonts)[:game_over_scores][:size],

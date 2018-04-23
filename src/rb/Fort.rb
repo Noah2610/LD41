@@ -10,7 +10,10 @@ class Fort < Instance
 
 	def setup
 		@size              = SETTINGS.fort(:size)
-		@position          = GAME.get_center_position
+		@position          = {
+			x:                 ((GAME.get_size(:width) * 0.5).round - 28),
+			y:                 208
+		}
 		@z_index           = SETTINGS.fort(:z_index)
 		@align             = :center
 		animation_settings = SETTINGS.fort(:animation)
@@ -39,13 +42,14 @@ class Fort < Instance
 
 	def setup_lines
 		offset_x = SETTINGS.lines(:x_offset)
+		pos_y    = (GAME.get_size(:height) * 0.5)
 		left_position = {
 			x: (get_left_boundary - offset_x),
-			y: get_position(:y)
+			y: pos_y
 		}
 		right_position = {
 			x: (get_right_boundary + offset_x),
-			y: get_position(:y)
+			y: pos_y
 		}
 		@lines = [
 			Line.new(
@@ -66,6 +70,7 @@ class Fort < Instance
 	end
 
 	def destroy!
+		@health = 0
 		GAME.game_over
 	end
 

@@ -9,7 +9,7 @@ class Line < Instance
 
 	def setup
 		lines_settings    = SETTINGS.lines
-		@size  = {
+		@size             = {
 			width:            lines_settings[:width],
 			height:           GAME.get_size(:height)
 		}

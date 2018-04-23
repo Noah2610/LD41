@@ -40,7 +40,7 @@ module GameOverScreen
 		@fonts[:game_over_text].draw_rel(
 			'Game Over!',
 			position[:x], position[:y], z_index,
-			0.5, 0.2,
+			0.5, 0.3,
 			1, 1,
 			color
 		)

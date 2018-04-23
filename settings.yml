@@ -27,12 +27,12 @@ game:
     - O
   fonts:
     game_over_text:
-      size:                        64
+      size:                        80
       background_size:
-        width:                     512
+        width:                     384
         height:                    96
       colors:
-        foreground:                0xff_ff0000
+        foreground:                0xff_ad0d0d
         background:                0xaa_aaaaaa
       z_indexes:
         foreground:                250
@@ -45,9 +45,9 @@ game:
       background_color:            0xaa_aaaaaa
       foreground_colors:
         name:   0xff_000000
-        time:   0xff_0000ff
-        points: 0xff_ffaa00
-        kills:  0xff_cc4422
+        time:   0xff_5400a8
+        points: 0xff_5400a8
+        kills:  0xff_5400a8
       z_indexes:
         foreground:                250
         background:                200
@@ -83,7 +83,7 @@ enemies:
       width:        1.0
       height:       0.25
     colors:
-      foreground:   0xff_ff0000
+      foreground:   0xff_9b0000
       background:   0xff_444444
     z_indexes:
       background:   60
@@ -140,27 +140,25 @@ prompt:
   colors:
     inactive:
       background:       0xff_888888
-      foreground:       0x99_dddddd
-      foreground_shift: 0x99_ffdddd
+      foreground:       0xff_000000
     active:
-      background:       0xff_666666
-      foreground:       0xff_2a74fc
-      foreground_shift: 0xff_ff74fc
+      background:       0xff_888888
+      foreground:       0xff_a51515
   z_indexes:
     background:         60
     foreground:         65
   size:
-    height:             24
+    height:             28
     width:              64
-  font_size:            24
+  font_size:            28
 
 fort:
   size:
-    width:              240
-    height:             500
+    width:              320
+    height:             380
   z_index:              10
-  health:               10
-  max_health:           10
+  health:               25
+  max_health:           25
   health_bar:
     relative_position:
       x:                0.5
@@ -169,7 +167,7 @@ fort:
       width:            0.75
       height:           0.1
     colors:
-      foreground:       0xff_ff0000
+      foreground:       0xff_9b0000
       background:       0xff_888888
     z_indexes:
       background:       20
@@ -188,7 +186,7 @@ fort:
 lines:
   x_offset: 128
   width:    64
-  color:    0x99_444444
+  color:    0x66_444444
   z_index:  40
 
 clusters:
@@ -199,10 +197,8 @@ clusters:
     delay:                    0.5
   alternate:
     delay:                    0.5
-  slow:
-    delays:
-      normal:                 1.0
-      big:                    1.0
+  double_alternate:
+    delay:                    0.5
 
 difficulty:
   base:

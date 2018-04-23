@@ -2,7 +2,6 @@ module Clusters
 	class Alternate < Cluster
 		def initialize args = {}
 			super
-			return
 			amount_of_beats = SETTINGS.clusters(:amount_of_beats)
 			delay           = SETTINGS.clusters(:alternate)[:delay]
 			beats           = Melodies.get_random_beats

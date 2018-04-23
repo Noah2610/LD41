@@ -157,7 +157,7 @@ class Prompt < Instance
 		@font.draw_rel(
 			text,
 			position[:x], position[:y], z_index,
-			0.5, 0.5,
+			0.5, 0.45,
 			1, 1,
 			color
 		)
