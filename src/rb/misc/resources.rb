@@ -5,10 +5,7 @@ def get_resources
 				File.join(DIR[:images], 'Background.png'),
 				GOSU_IMAGE_OPTIONS
 			),
-			fort:       Gosu::Image.new(
-				File.join(DIR[:images], 'Fort/Fort_0.png'),
-				GOSU_IMAGE_OPTIONS
-			),
+			fort:       load_images_from_directory(File.join DIR[:images], 'Fort'),
 			enemies: {
 				normal:   load_images_from_directory(File.join DIR[:images], 'Enemies/Normal'),
 				big:      load_images_from_directory(File.join DIR[:images], 'Enemies/Big'),

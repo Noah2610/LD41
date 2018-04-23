@@ -1,7 +1,7 @@
 class Fort < Instance
 	include Health
 	include HealthBar
-	include Texture
+	include Animation
 
 	def initialize args = {}
 		setup
@@ -9,11 +9,14 @@ class Fort < Instance
 	end
 
 	def setup
-		@size     = SETTINGS.fort(:size)
-		@position = GAME.get_center_position
-		@z_index  = SETTINGS.fort(:z_index)
-		@align    = :center
-		@image    = RESOURCES[:images][:fort]
+		@size              = SETTINGS.fort(:size)
+		@position          = GAME.get_center_position
+		@z_index           = SETTINGS.fort(:z_index)
+		@align             = :center
+		animation_settings = SETTINGS.fort(:animation)
+		sorted_image_keys  = animation_settings[:image_order].map { |x| x.to_s.to_sym }
+		@images            = RESOURCES[:images][:fort].to_sorted_a sorted_image_keys
+		@animation_delay   = animation_settings[:delay]
 		setup_health
 		setup_lines
 	end

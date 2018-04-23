@@ -4,20 +4,20 @@ module Clusters
 			super
 			#TODO:
 			## Make proper Cluster design
-			return
 			amount_of_beats = SETTINGS.clusters(:amount_of_beats)
-			@delays         = SETTINGS.clusters(:slow)[:delays]
+			delays          = SETTINGS.clusters(:slow)[:delays]
+			beats           = Melodies.get_random_beats
 			normal_side     = [:left, :right].sample
 			big_side        = [:left, :right].reject { |x| x == normal_side } .first
 			amount_of_beats.times do |n|
 				if ((2 .. 4).to_a.any? { |i| n % i == 0 })
-					enemy_class = [Enemies::Normal, Enemies::Zombie, Enemies::Wizard].sample
+					enemy_class = [Enemies::Zombie, Enemies::Wizard].sample
 					side        = normal_side
-					delay       = @delays[:normal]
+					delay       = delays[:normal]
 				else
 					enemy_class = Enemies::Big
 					side        = big_side
-					delay       = @delays[:big]
+					delay       = delays[:big]
 				end
 				@enemies << enemy_class.new(
 					cluster: self,

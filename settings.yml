@@ -91,18 +91,6 @@ enemies:
     border_padding:
       x:            1
       y:            1
-  normal:
-    size:
-      width:        32
-      height:       48
-    speed:          3
-    damage:         1
-    animation:
-      delay:        0.5
-      image_order:
-        - Normal
-    points:         5
-    amount_of_keys: 1
   zombie:
     size:
       width:        32
@@ -171,8 +159,8 @@ fort:
     width:              240
     height:             500
   z_index:              10
-  health:               1000
-  max_health:           1000
+  health:               10
+  max_health:           10
   health_bar:
     relative_position:
       x:                0.5
@@ -189,6 +177,13 @@ fort:
     border_padding:
       x:                4
       y:                4
+  animation:
+    delay:              0.1
+    image_order:
+      - Fort_0
+      - Fort_1
+      - Fort_0
+      - Fort_2
 
 lines:
   x_offset: 128
