@@ -76,6 +76,7 @@ enemies:
     health:         1
     max_health:     1
     points:         10
+    amount_of_keys: 1
   health_bar:
     relative_position:
       x:            0.0
@@ -100,13 +101,56 @@ enemies:
       x:            3
       y:            0.0
     damage:         1
-    health:         1
-    max_health:     1
     animation:
       delay:        0.5
       image_order:
-        - Small
+        - Normal
     points:         5
+    amount_of_keys: 1
+  zombie:
+    size:
+      width:        32
+      height:       48
+    speed:
+      x:            3
+      y:            0.0
+    damage:         1
+    animation:
+      delay:        0.5
+      image_order:
+        - Zombie_0
+        - Zombie_1
+        - Zombie_2
+    points:         5
+    amount_of_keys: 1
+  wizard:
+    size:
+      width:        32
+      height:       48
+    speed:
+      x:            3
+      y:            0.0
+    damage:         1
+    animation:
+      delay:        0.5
+      image_order:
+        - Wizard
+    points:         5
+    amount_of_keys: 1
+  big:
+    size:
+      width:        64
+      height:       96
+    speed:
+      x:            2
+      y:            0.0
+    damage:         2
+    animation:
+      delay:        0.5
+      image_order:
+        - Big
+    points:         15
+    amount_of_keys: 2
 
 prompt:
   y_offset:           16
@@ -164,11 +208,13 @@ clusters:
 difficulty:
   base:
     speed_multiplier:
-      x: 1.0
-      y: 1.0
+      x:                       1.0
+      y:                       1.0
+    delay_multiplier:          1.0
   speed_multiplier_increments:
-    x:   0.1
-    y:   0.0
+    x:                         0.1
+    y:                         0.0
+  delay_multiplier_decrements: 0.025
 
 score:
   font_size:    32

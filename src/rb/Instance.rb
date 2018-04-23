@@ -147,6 +147,10 @@ class Instance
 		return @align
 	end
 
+	def get_side
+		return nil
+	end
+
 	def update
 	end
 

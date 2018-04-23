@@ -1,10 +1,10 @@
 module Enemies
-	class Normal < Enemy
+	class Big < Enemy
 		include Animation
 
 		def setup args = {}
 			super
-			enemy_type_name    = :normal
+			enemy_type_name    = :big
 			enemy_settings     = SETTINGS.enemies(enemy_type_name)
 			@size              = enemy_settings[:size]            if (!!enemy_settings[:size])
 			@speed             = enemy_settings[:speed]           if (!args[:speed] && !!enemy_settings[:speed])

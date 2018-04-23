@@ -48,7 +48,7 @@ class ClusterManager
 	end
 
 	def add_new_cluster
-		DIFFICULTY.increase_speed_multiplier
+		DIFFICULTY.increase_difficulty
 		new_cluster = AVAILABLE_CLUSTERS.sample.new
 		new_cluster.init
 		@clusters << new_cluster

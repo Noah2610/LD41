@@ -8,6 +8,8 @@ module Enemies
 		end
 
 		def setup args = {}
+			@speed_multiplier = DIFFICULTY.get_speed_multiplier
+			@delay_multiplier = DIFFICULTY.get_delay_multiplier
 			enemy_defaults    = SETTINGS.enemies(:defaults)
 			@position         = args[:position] || { x: 0, y: 0 }
 			@size             = args[:size]     || enemy_defaults[:size]
@@ -21,15 +23,13 @@ module Enemies
 			@damage           = enemy_defaults[:damage]
 			@side             = ([:left, :right].include? args[:side]) ? args[:side] : :left
 			@cluster          = args[:cluster]
-			@spawn_delay      = args[:delay]    || 0.0
+			@spawn_delay      = (args[:delay]    || 0.0) * @delay_multiplier
 			@spawned          = false
 			@can_collide_with = [
 				GAME.get_fort
 			]
-			@amount_of_keys   = args[:keys] || 1
-			@speed_multiplier = DIFFICULTY.get_speed_multiplier
+			@amount_of_keys   = args[:keys] || enemy_defaults[:amount_of_keys] || 1
 			@points           = enemy_defaults[:points]
-			setup_prompt
 		end
 
 		def get_health
