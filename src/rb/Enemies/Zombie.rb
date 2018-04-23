@@ -18,7 +18,9 @@ module Enemies
 			@amount_of_keys    = enemy_settings[:amount_of_keys]  if (!args[:keys] && !!enemy_settings[:amount_of_keys])
 			animation_settings = SETTINGS.enemies(enemy_type_name)[:animation]
 			sorted_image_keys  = animation_settings[:image_order].map { |x| x.to_s.to_sym }
-			@images            = RESOURCES[:images][:enemies][enemy_type_name].to_sorted_a sorted_image_keys
+			side               = get_side
+			@images            = RESOURCES[:images][:enemies][enemy_type_name].to_sorted_a sorted_image_keys       if ([:left, nil].include? side)
+			@images            = RESOURCES[:images][:enemies_left][enemy_type_name].to_sorted_a sorted_image_keys  if (side == :right)
 			@animation_delay   = animation_settings[:delay]
 			setup_prompt
 		end

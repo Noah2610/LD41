@@ -7,20 +7,12 @@ module Animation
 	def setup_animation
 		size                              = get_size
 		first_image                       = @images.first
-		x_multiplier                      = get_scale_x_multiplier || 1
 		@scale                            = {
-			x: ((size[:width].to_f  / first_image.width.to_f) * x_multiplier).round,
+			x: (size[:width].to_f  / first_image.width.to_f),
 			y: (size[:height].to_f / first_image.height.to_f)
 		}
 		@current_image_counter            = 0
 		@next_animation_image_change_time = Time.now.to_f + @animation_delay
-	end
-
-	def get_scale_x_multiplier
-		side = get_side
-		return  1  if (side == :left)
-		return -1  if (side == :right)
-		return  1
 	end
 
 	def get_current_image

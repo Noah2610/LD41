@@ -121,7 +121,7 @@ enemies:
     amount_of_keys: 1
   big:
     size:
-      width:        64
+      width:        80
       height:       96
     speed:          2
     damage:         2

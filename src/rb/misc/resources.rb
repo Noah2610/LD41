@@ -11,6 +11,12 @@ def get_resources
 				big:      load_images_from_directory(File.join DIR[:images], 'Enemies/Big'),
 				wizard:   load_images_from_directory(File.join DIR[:images], 'Enemies/Wizard'),
 				zombie:   load_images_from_directory(File.join DIR[:images], 'Enemies/Zombie')
+			},
+			enemies_left: {
+				normal:   load_images_from_directory(File.join DIR[:images], 'Enemies/Left/Normal'),
+				big:      load_images_from_directory(File.join DIR[:images], 'Enemies/Left/Big'),
+				wizard:   load_images_from_directory(File.join DIR[:images], 'Enemies/Left/Wizard'),
+				zombie:   load_images_from_directory(File.join DIR[:images], 'Enemies/Left/Zombie')
 			}
 		},
 		audio: {
