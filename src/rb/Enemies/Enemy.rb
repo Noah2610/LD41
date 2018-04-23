@@ -114,9 +114,13 @@ module Enemies
 			destroy!
 		end
 
-		def destroy!
+		def kill!
 			AUDIO.play_beat_any :BassDrum1, :BassDrum2, :BassDrum3
 			increase_score
+			destroy!
+		end
+
+		def destroy!
 			get_cluster.destroy_enemy self
 		end
 

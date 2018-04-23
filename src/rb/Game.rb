@@ -92,8 +92,20 @@ class Game < Gosu::Window
 	end
 
 	def game_over
-		puts "GAME OVER"
+		SCORE.set_score_time
+		game_over_output
 		@running = false
+	end
+
+	def game_over_output
+		puts([
+			'Game Over',
+			'Final Scores:',
+			'  Time survived:',
+			"    #{SCORE.get_semantic_score_time}",
+			'  Points:',
+			"    #{SCORE.get_score_points} Points"
+		].join("\n"))
 	end
 
 	def button_down key_id

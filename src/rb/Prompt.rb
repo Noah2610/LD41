@@ -91,7 +91,7 @@ class Prompt < Instance
 	end
 
 	def destroy!
-		get_enemy.destroy!
+		get_enemy.kill!
 	end
 
 	def update

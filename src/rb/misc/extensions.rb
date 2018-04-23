@@ -49,3 +49,14 @@ end
 class String
 	include StringExtension
 end
+
+## Add #msec to Time to get milliseconds
+module TimeExtension
+	def msec
+		return self.strftime('%3N').to_i
+	end
+end
+
+class Time
+	include TimeExtension
+end

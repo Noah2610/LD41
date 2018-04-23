@@ -1,6 +1,8 @@
 class Score
-	SEMANTIC_TIME_FORMAT       = '%M:%S.%3N'  # '%3N' == milliseconds
-	SEMANTIC_TIME_FORMAT_LONG  = '%H:%M:%S.%3N'
+	FORMATTED_SCORE_TIME            = '%M:%S.%3N'  # '%3N' == milliseconds
+	FORMATTED_SCORE_TIME_LONG       = '%H:%M:%S.%3N'
+	SEMANTIC_SCORE_TIME_FORMAT      = '%M MINUTES, %S SECONDS, and %3N MILLISECONDS'
+	SEMANTIC_SCORE_TIME_FORMAT_LONG = '%H HOURS, %M MINUTES, %S SECONDS, and %3N MILLISECONDS'
 	UPDATE_SCORE_TIME_INTERVAL = 4            # 30 would be about every half second, at 60 fps
 
 	def initialize
@@ -33,7 +35,12 @@ class Score
 	end
 
 	def update
-		set_score_time  if (GAME.get_tick % UPDATE_SCORE_TIME_INTERVAL == 0)
+		set_score_time  if (update_score_time?)
+	end
+
+	def update_score_time?
+		return false  unless (GAME.is_running?)
+		return (GAME.get_tick % UPDATE_SCORE_TIME_INTERVAL == 0)
 	end
 
 	def draw
@@ -63,7 +70,7 @@ class Score
 	end
 
 	def draw_score_time
-		text     = get_semantic_score_time
+		text     = get_formatted_score_time
 		return  if (text.nil?)
 		position = {
 			x: (GAME.get_size(:width) - @text_padding),
@@ -107,10 +114,10 @@ class Score
 		return nil
 	end
 
-	def get_semantic_score_time
+	def get_formatted_score_time
 		return nil  if (get_score_time.nil?)
-		text = get_score_time.strftime SEMANTIC_TIME_FORMAT       if (get_score_time.hour == 0)
-		text = get_score_time.strftime SEMANTIC_TIME_FORMAT_LONG  if (get_score_time.hour > 0)
+		text = get_score_time.strftime FORMATTED_SCORE_TIME       if (get_score_time.hour == 0)
+		text = get_score_time.strftime FORMATTED_SCORE_TIME_LONG  if (get_score_time.hour > 0)
 		text[-1] = ''
 		return text
 	end
@@ -154,5 +161,28 @@ class Score
 
 	def get_points_with_difficulty points
 		return points * DIFFICULTY.get_score_multiplier
+	end
+
+	def get_semantic_score_time
+		time     = get_score_time
+		if    (time.hour == 0)
+			semantic = time.strftime SEMANTIC_SCORE_TIME_FORMAT
+		elsif (time.hour >  0)
+			semantic = time.strftime SEMANTIC_SCORE_TIME_FORMAT_LONG
+		end
+		words = {
+# method name  to be replaced   singular       plural
+			hour:    ['HOURS',        'Hour (wow)',  'HOURS (how?)'],
+			min:     ['MINUTES',      'Minute',      'Minutes'],
+			sec:     ['SECONDS',      'Second',      'Seconds'],
+			msec:    ['MILLISECONDS', 'Millisecond', 'Milliseconds']
+		}
+		words.each do |meth, word_group|
+			amount    = time.method(meth).call
+			plurality = 1  if (amount == 1)
+			plurality = 2  if (amount == 0 || amount > 1)
+			semantic.sub! word_group[0], word_group[plurality]
+		end
+		return semantic
 	end
 end
