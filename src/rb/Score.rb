@@ -45,10 +45,11 @@ class Score
 	end
 
 	def draw
-		draw_background
+		#draw_background
 		draw_foreground
 	end
 
+	#TODO: Deprecated, clean up
 	def draw_background
 		size     = get_background_size
 		position = {

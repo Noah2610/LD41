@@ -1,7 +1,7 @@
 ---
 window:
-  width:  960
-  height: 560
+  width:  1200
+  height: 700
   title:  'Ludum Dare 41!'
 
 game:
@@ -69,9 +69,7 @@ enemies:
       width:        32
       height:       48
     z_index:        50
-    speed:
-      x:            4
-      y:            1.5
+    speed:          4
     damage:         1
     health:         1
     max_health:     1
@@ -97,9 +95,7 @@ enemies:
     size:
       width:        32
       height:       48
-    speed:
-      x:            3
-      y:            1.5
+    speed:          3
     damage:         1
     animation:
       delay:        0.5
@@ -111,12 +107,10 @@ enemies:
     size:
       width:        32
       height:       48
-    speed:
-      x:            3
-      y:            1.5
+    speed:          3
     damage:         1
     animation:
-      delay:        0.5
+      delay:        0.1
       image_order:
         - Zombie_0
         - Zombie_1
@@ -127,9 +121,7 @@ enemies:
     size:
       width:        32
       height:       48
-    speed:
-      x:            3
-      y:            1.5
+    speed:          3
     damage:         1
     animation:
       delay:        0.5
@@ -141,9 +133,7 @@ enemies:
     size:
       width:        64
       height:       96
-    speed:
-      x:            2
-      y:            1.5
+    speed:          2
     damage:         2
     animation:
       delay:        0.5
@@ -203,18 +193,14 @@ lines:
 
 clusters:
   defaults:
-    spawn_position_y_padding: 64
+    spawn_position_y_padding: 96
 
 difficulty:
   base:
-    speed_multiplier:
-      x:                       1.0
-      y:                       1.0
+    speed_multiplier:          1.0
     delay_multiplier:          1.0
-  speed_multiplier_increments:
-    x:                         0.1
-    y:                         0.1
-  delay_multiplier_decrements: 0.025
+  speed_multiplier_increment:  0.1
+  delay_multiplier_decrement:  0.025
 
 score:
   font_size:    32

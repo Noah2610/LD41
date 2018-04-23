@@ -3,7 +3,7 @@ module Clusters
 		def initialize args = {}
 			super
 			side = [:left, :right].sample
-			5.times do |n|
+			20.times do |n|
 				enemy_class = [Enemies::Normal, Enemies::Zombie, Enemies::Wizard].sample
 				@enemies << enemy_class.new(
 					cluster: self,
