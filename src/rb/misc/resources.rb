@@ -17,7 +17,7 @@ def get_resources
 			}
 		},
 		audio: {
-			beats:      load_audio_from_directory(File.join DIR[:audio], 'Beats')
+			beats: load_audio_from_directory(DIR[:beats])
 		},
 		fonts: {
 			debug:      Gosu::Font.new(

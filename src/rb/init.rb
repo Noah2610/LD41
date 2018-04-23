@@ -3,6 +3,7 @@ RESOURCES  = get_resources
 DIFFICULTY = DifficultyManager.new
 SCORE      = Score.new
 AUDIO      = AudioManager.new
+MELODIES   = Melodies.get_melodies
 
 GAME       = Game.new
 GAME.init_game

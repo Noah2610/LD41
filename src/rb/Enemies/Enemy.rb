@@ -30,6 +30,7 @@ module Enemies
 			]
 			@amount_of_keys   = args[:keys] || enemy_defaults[:amount_of_keys] || 1
 			@points           = enemy_defaults[:points]
+			@beat             = args[:beat]
 		end
 
 		def get_health
@@ -115,9 +116,14 @@ module Enemies
 		end
 
 		def kill!
-			AUDIO.play_beat_any :BassDrum1, :BassDrum2, :BassDrum3
+			#AUDIO.play_beat_any :BassDrum1, :BassDrum2, :BassDrum3
+			AUDIO.play_beat get_beat
 			increase_score
 			destroy!
+		end
+
+		def get_beat
+			return @beat || :default
 		end
 
 		def destroy!

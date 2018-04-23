@@ -197,6 +197,7 @@ lines:
   z_index:  40
 
 clusters:
+  amount_of_beats:            16
   defaults:
     spawn_position_y_padding: 96
   rapid:

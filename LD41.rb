@@ -18,8 +18,10 @@ DIR = {
 	includes: File.join(ROOT, 'src/rb/Includes'),
 	enemies:  File.join(ROOT, 'src/rb/Enemies'),
 	clusters: File.join(ROOT, 'src/rb/Clusters'),
+	melodies: File.join(ROOT, 'src/rb/Melodies'),
 	images:   File.join(ROOT, 'src/Art/Images'),
 	audio:    File.join(ROOT, 'src/Art/Audio'),
+	beats:    File.join(ROOT, 'src/Art/Audio/Beats'),
 	fonts:    File.join(ROOT, 'src/Fonts'),
 	settings: File.join(ROOT, 'settings.yml'),
 	log:      File.join(ROOT, 'log')
