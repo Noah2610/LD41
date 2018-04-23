@@ -118,8 +118,8 @@ class Game < Gosu::Window
 
 	def button_down key_id
 		#char = Gosu.button_id_to_char key_id
-		exit  if (key_id == Gosu::KB_ESCAPE)
-		get_fort.handle_key_down key_id
+		exit                             if (key_id == Gosu::KB_ESCAPE)
+		get_fort.handle_key_down key_id  if (is_running?)
 	end
 
 	def needs_cursor?

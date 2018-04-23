@@ -181,8 +181,8 @@ module Enemies
 		end
 
 		def move_y
-			speed = @speed[:y] * @speed_multiplier[:y]
-			speed = get_polarity_for_side speed
+			speed = (@speed[:y] * @speed_multiplier[:y]).abs * -1
+			#speed = get_polarity_for_side speed
 			@position[:y] += speed
 		end
 
