@@ -140,7 +140,10 @@ enemies:
     animation:
       delay:        0.5
       image_order:
-        - Big
+        - Big_0
+        - Big_1
+        - Big_2
+        - Big_3
     points:         15
     amount_of_keys: 2
 
@@ -194,12 +197,17 @@ lines:
   z_index:  40
 
 clusters:
+  amount_of_beats:            16
   defaults:
     spawn_position_y_padding: 96
   rapid:
     delay:                    0.5
   alternate:
     delay:                    0.5
+  slow:
+    delays:
+      normal:                 1.0
+      big:                    1.0
 
 difficulty:
   base:
