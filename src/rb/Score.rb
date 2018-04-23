@@ -89,7 +89,7 @@ class Score
 	end
 
 	def draw_score_points
-		text     = get_semantic_score_points
+		text     = get_semantic_score_points_short
 		return  if (text.nil?)
 		position = {
 			x: (GAME.get_size(:width) - @text_padding),
@@ -147,7 +147,14 @@ class Score
 
 	def get_semantic_score_points
 		points = get_score_points.round
-		text   = "#{points} Pts."
+		text   = "#{points} Points"  if (points == 0 || points > 1)
+		text   = "#{points} Point"   if (points == 1)
+		return text
+	end
+
+	def get_semantic_score_points_short
+		points = get_score_points.round
+		text   = "#{points} Pts"
 		return text
 	end
 
@@ -193,5 +200,12 @@ class Score
 
 	def get_score_kills
 		return @scores[:kills]
+	end
+
+	def get_semantic_score_kills
+		kills    = get_score_kills
+		semantic = "#{kills} Kills"  if (kills == 0 || kills > 1)
+		semantic = "#{kills} Kill"   if (kills == 1)
+		return semantic
 	end
 end

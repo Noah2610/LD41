@@ -25,6 +25,33 @@ game:
     - U
     - I
     - O
+  fonts:
+    game_over_text:
+      size:                        64
+      background_size:
+        width:                     512
+        height:                    96
+      colors:
+        foreground:                0xff_ff0000
+        background:                0xaa_aaaaaa
+      z_indexes:
+        foreground:                250
+        background:                200
+    game_over_scores:
+      size:                        32
+      background_size:
+        width:                     512
+        height:                    64
+      background_color:            0xaa_aaaaaa
+      foreground_colors:
+        name:   0xff_000000
+        time:   0xff_0000ff
+        points: 0xff_ffaa00
+        kills:  0xff_cc4422
+      z_indexes:
+        foreground:                250
+        background:                200
+      padding_y:                   8
 
 instance_defaults:
   z_index:  50

@@ -1,4 +1,6 @@
 class Game < Gosu::Window
+	include GameOverScreen
+
 	def initialize
 		setup
 		super @size[:width], @size[:height]
@@ -7,17 +9,21 @@ class Game < Gosu::Window
 
 	# Called upon instantiation
 	def setup
-		@tick                     = 0
-		@size                     = SETTINGS.window(:size).keys_to_sym
-		@colors                   = SETTINGS.game(:colors)
-		@background_z_index       = SETTINGS.game(:background_z_index)
-		@background_image_z_index = SETTINGS.game(:background_image_z_index)
-		@background_image         = RESOURCES[:images][:background]
-		@background_image_scale   = {
-			x: (get_size(:width).to_f  / @background_image.width.to_f),
-			y: (get_size(:height).to_f / @background_image.height.to_f)
+		@tick                               = 0
+		@size                               = SETTINGS.window(:size).keys_to_sym
+		@colors                             = SETTINGS.game(:colors)
+		@background_z_index                 = SETTINGS.game(:background_z_index)
+		@background_image_z_index           = SETTINGS.game(:background_image_z_index)
+		@background_image                   = RESOURCES[:images][:background]
+		@background_image_scale             = {
+			x: (get_size(:width).to_f         / @background_image.width.to_f),
+			y: (get_size(:height).to_f        / @background_image.height.to_f)
 		}
-		@cluster_manager          = ClusterManager.new
+		@cluster_manager                    = ClusterManager.new
+		@fonts                              = {
+			game_over_text:                     RESOURCES[:fonts][:game_over][:text],
+			game_over_scores:                   RESOURCES[:fonts][:game_over][:scores]
+		}
 	end
 
 	def init_game
@@ -104,9 +110,9 @@ class Game < Gosu::Window
 			'  Time Survived:',
 			"    #{SCORE.get_semantic_score_time}",
 			'  Points:',
-			"    #{SCORE.get_score_points.round} Points",
+			"    #{SCORE.get_semantic_score_points}",
 			'  Total Kills:',
-			"    #{SCORE.get_score_kills} Kills"
+			"    #{SCORE.get_semantic_score_kills}"
 		].join("\n"))
 	end
 
@@ -145,7 +151,10 @@ class Game < Gosu::Window
 	end
 
 	def draw
-		return  unless (is_running?)
+		unless (is_running?)
+			draw_game_over
+			return
+		end
 		draw_background
 		draw_background_image
 		get_fort.draw
