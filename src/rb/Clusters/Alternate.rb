@@ -1,10 +1,11 @@
 module Clusters
-	class Rapid < Cluster
+	class Alternate < Cluster
 		def initialize args = {}
+			@delay = SETTINGS.clusters(:alternate)[:delay]
 			super
-			@delay = SETTINGS.clusters(:rapid)[:delay]
-			side = [:left, :right].sample
-			20.times do
+			20.times do |n|
+				side = :left   if (n % 2 == 0)
+				side = :right  if (n % 2 != 0)
 				enemy_class = [Enemies::Normal, Enemies::Zombie, Enemies::Wizard].sample
 				@enemies << enemy_class.new(
 					cluster: self,

@@ -124,9 +124,11 @@ enemies:
     speed:          3
     damage:         1
     animation:
-      delay:        0.5
+      delay:        0.25
       image_order:
-        - Wizard
+        - Wizard_0
+        - Wizard_1
+        - Wizard_2
     points:         5
     amount_of_keys: 1
   big:
@@ -166,8 +168,8 @@ fort:
     width:              240
     height:             500
   z_index:              10
-  health:               10
-  max_health:           10
+  health:               1000
+  max_health:           1000
   health_bar:
     relative_position:
       x:                0.5
@@ -194,6 +196,10 @@ lines:
 clusters:
   defaults:
     spawn_position_y_padding: 96
+  rapid:
+    delay:                    0.5
+  alternate:
+    delay:                    0.5
 
 difficulty:
   base:
