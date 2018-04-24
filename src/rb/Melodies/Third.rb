@@ -1,11 +1,9 @@
 module Melodies
-	class First < Melody
+	class Third < Melody
 		def set_beats
-			beats   = []
-			beats   << :Synth_G      << :Synth_F_Hash << :Synth_F << :Synth_E
-			3.times do
-				beats << :Synth_D_Hash << :Synth_A_Hash << :Synth_A << :Synth_D
-			end
+			beats = []
+			beats << :Third_C << :Third_C << :Third_A_Hash << :Third_A_Hash << :Third_Unknown << :Third_G << :Third_F_Hash << :Third_F << :Third_D_Hash << :Third_C << :Third_A_Hash
+			beats << :Third_C << :Third_D_Hash << :Third_F << :Third_A_Hash << :Third_C
 			@beats  = beats
 		end
 	end
