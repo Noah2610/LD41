@@ -40,9 +40,6 @@ class Prompt < Instance
 	end
 
 	def set_random_keys
-		#TODO:
-		## Get amount of keys from DifficultyManager
-		## Maybe decide amount of keys in Cluster, from where Enemy is spawned?
 		@keys = []
 		@amount_of_keys.times do
 			@keys << SETTINGS.get_available_prompt_keys.sample
@@ -80,7 +77,6 @@ class Prompt < Instance
 	end
 
 	def proper_key_id? key_id
-		#TODO: Non-sequential?
 		char = Gosu.button_id_to_char(key_id).upcase
 		return char == get_keys.last
 	end

@@ -45,25 +45,7 @@ class Score
 	end
 
 	def draw
-		#draw_background
 		draw_foreground
-	end
-
-	#TODO: Deprecated, clean up
-	def draw_background
-		size     = get_background_size
-		position = {
-			x: ((GAME.get_size(:width) - @text_padding) - size[:width]),
-			y: @text_padding
-		}
-		color    = get_color   :background
-		z_index  = get_z_index :background
-		Gosu.draw_rect(
-			position[:x], position[:y],
-			size[:width], size[:height],
-			color,
-			z_index
-		)
 	end
 
 	def draw_foreground

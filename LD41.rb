@@ -4,11 +4,6 @@ require 'gosu'
 require 'logger'
 require 'yaml'
 
-#TODO: Remove development gems for final version
-require 'awesome_print'
-require 'byebug'
-#require 'simple-benchmark'
-
 ROOT = File.expand_path(File.dirname(__FILE__))
 
 DIR = {

@@ -53,8 +53,6 @@ class Game < Gosu::Window
 	end
 
 	def get_size target = :all
-		#TODO:
-		## Change up this method if game will get a panel at the top or so
 		return get_offset_size target
 	end
 
@@ -70,8 +68,6 @@ class Game < Gosu::Window
 	end
 
 	def get_canvas_offset target = :all
-		#TODO:
-		## Add offsets here when necessary
 		target = :x            if (target == :width)
 		target = :y            if (target == :height)
 		offset = { x: 0, y: 0 }
@@ -160,8 +156,6 @@ class Game < Gosu::Window
 		get_fort.draw
 		get_cluster_manager.draw
 		SCORE.draw
-		#TODO: REMOVE
-		draw_fps
 	end
 
 	def draw_background
@@ -178,27 +172,6 @@ class Game < Gosu::Window
 		@background_image.draw(
 			0, 0, get_z_index(:image),
 			@background_image_scale[:x], @background_image_scale[:y]
-		)
-	end
-
-	#TODO: REMOVE
-	def draw_fps
-		pos = {
-			x: 32,
-			y: 32
-		}
-		Gosu.draw_rect(
-			0, 0,
-			pos[:x], pos[:y],
-			@colors[:background],
-			100
-		)
-		RESOURCES[:fonts][:debug].draw_rel(
-			Gosu.fps,
-			pos[:x] * 0.5, pos[:y] * 0.5, 110,
-			0.5, 0.5,
-			1, 1,
-			0xff_000000
 		)
 	end
 end
