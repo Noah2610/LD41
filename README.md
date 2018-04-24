@@ -45,13 +45,16 @@ and becomes exponentially more difficult as time goes on.
 Try to survive as long as you can, and gain as many points as possible,  
 before you reach your _inevitable death_.
 
-## Tools Used
-|                       |                                 |
-| --------------------- | ------------------------------- |
-| __VIM__               | Text Editor                     |
-| __Gimp__              | Graphics                        |
-| __Git__               | Version Control                 |
-| [__Ocra__][ocra-gem]  | For building windows executable |
+## Software Used
+|                                |                                   |
+| ------------------------------ | --------------------------------- |
+| __VIM__                        | Text Editor                       |
+| __Gimp__                       | Graphics                          |
+| __[Bosca Ceoil][bosca-ceoil]__ | For the tunes                     |
+| __[Audacity][audacity]__       | For extracting the tunes          |
+| __Git__                        | Version Control                   |
+| [__Gosu__][gosu]               | Ruby game library                 |
+| [__Ocra__][ocra-gem]           | For building windows executable   |
 
 ## Credits
 |              |           |
@@ -114,6 +117,8 @@ __Have fun playing all these interesting LD41 games!__
 
 [thumbnail]:                https://raw.githubusercontent.com/Noah2610/LD41/master/Thumbnail.png
 [ludum-dare-game]:          https://ldjam.com/events/ludum-dare/41/medieval-melody-mayhem
+[bosca-ceoil]:              https://boscaceoil.net/
+[audacity]:                 http://www.audacityteam.org/
 [ocra-gem]:                 https://github.com/larsch/ocra/
 [gosu]:                     https://www.libgosu.org/ruby.html
 [trello-board]:             https://trello.com/b/pkaQPFyW/ld41
