@@ -1,1 +1,1 @@
-nmap <leader>r :!./LD41.rb<CR>
+nmap <leader>r :!./MedievalMelodyMayhem.rb<CR>

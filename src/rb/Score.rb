@@ -72,7 +72,7 @@ class Score
 	end
 
 	def draw_score_points
-		text     = get_semantic_score_points_short
+		text     = get_semantic_score_points
 		return  if (text.nil?)
 		position = {
 			x: (GAME.get_size(:width) - @text_padding),
