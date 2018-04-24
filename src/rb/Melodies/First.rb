@@ -2,9 +2,9 @@ module Melodies
 	class First < Melody
 		def set_beats
 			beats   = []
-			beats   << :Synth_G      << :Synth_F_Hash << :Synth_F << :Synth_E
+			beats   << :First_G      << :First_F_Hash << :First_F << :First_E
 			3.times do
-				beats << :Synth_D_Hash << :Synth_A_Hash << :Synth_A << :Synth_D
+				beats << :First_D_Hash << :First_A_Hash << :First_A << :First_D
 			end
 			@beats  = beats
 		end
