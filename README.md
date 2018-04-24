@@ -57,15 +57,19 @@ before you reach your _inevitable death_.
 | [__Ocra__][ocra-gem]           | For building windows executable   |
 
 ## Credits
-|              |           |
-| ------------ | --------- |
-| __Graphics__ | @hoichael |
-| __Audio__    | A Friend  |
-| __Coding__   | @noahro   |
+|              |                                            |
+| ------------ | ------------------------------------------ |
+| __Graphics__ | [Emu](https://github.com/hoichael)         |
+| __Audio__    | [Moe](https://github.com/theniggeth)       |
+| __Coding__   | [Noah _(me)_](https://github.com/Noah2610) |
 
 ## Development Information
 This game is written in __Ruby__ version __2.5.1__ using the game library [__Gosu__][gosu].  
 We used [this Trello Board][trello-board] for task management during development.
+
+### Changelog
+__2018-04-24__ - _Past submission hour!_  
+- Make Wizards give more points than Zombies _(5 -> 15 points)_
 
 ## Installation
 If you are on __Windows__ you should have no problems downloading and running the [executable][windows-executable].
