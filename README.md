@@ -1,4 +1,7 @@
 # Medieval Melody Mayhem
+
+![Medieval Melody Mayhem Thumbnail][thumbnail]
+
 This is a jam game made in __74 hours__ for [__Ludum Dare 41__][ludum-dare-game]!  
 
 The theme was __Combine 2 Incompatible Genres__.  
@@ -52,6 +55,7 @@ This game is written in __Ruby__ using the game library [__Gosu__][gosu].
 
 We used this [Trello Board][trello-board] for task management during development.
 
-[ludum-dare-game]: https://ldjam.com/events/ludum-dare/41/$74305
+[thumbnail]:       https://raw.githubusercontent.com/Noah2610/LD41/master/Thumbnail.png
+[ludum-dare-game]: https://ldjam.com/events/ludum-dare/41/medieval-melody-mayhem
 [gosu]:            https://www.libgosu.org/ruby.html
 [trello-board]:    https://trello.com/b/pkaQPFyW/ld41
