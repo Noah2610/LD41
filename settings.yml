@@ -185,7 +185,7 @@ fort:
 
 lines:
   x_offset: 128
-  width:    64
+  width:    80
   color:    0x66_444444
   z_index:  40
 
@@ -196,16 +196,24 @@ clusters:
   rapid:
     delay:                    0.5
   alternate:
-    delay:                    0.5
+    delay:                    1.0
   double_alternate:
     delay:                    0.5
+  quad_double_alternate:
+    delay:                    0.75
+  random:
+    delay:                    1.0
+  rapid_wizards:
+    delay:                    1.0
+  alternate_wizards:
+    delay:                    1.25
 
 difficulty:
   base:
     speed_multiplier:          1.0
     delay_multiplier:          1.0
-  speed_multiplier_increment:  0.1
-  delay_multiplier_decrement:  0.025
+  speed_multiplier_increment:  0.05
+  delay_multiplier_decrement:  0.05
 
 score:
   font_size:    32

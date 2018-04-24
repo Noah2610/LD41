@@ -5,6 +5,7 @@ module Clusters
 			amount_of_beats = SETTINGS.clusters(:amount_of_beats)
 			delay           = SETTINGS.clusters(:double_alternate)[:delay]
 			beats           = Melodies.get_random_beats
+			enemy_class     = Enemies::Zombie
 			current_side    = [:left, :right].sample
 			counter         = 0
 			amount_of_beats.times do |n|
@@ -16,7 +17,6 @@ module Clusters
 						current_side = :right
 					end
 				end
-				enemy_class = [Enemies::Zombie, Enemies::Wizard].sample
 				@enemies << enemy_class.new(
 					cluster: self,
 					side:    current_side,
