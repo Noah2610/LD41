@@ -196,9 +196,9 @@ clusters:
   rapid:
     delay:                    0.5
   alternate:
-    delay:                    1.0
+    delay:                    0.75
   double_alternate:
-    delay:                    0.5
+    delay:                    0.75
   quad_double_alternate:
     delay:                    0.75
   random:

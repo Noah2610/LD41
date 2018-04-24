@@ -1,5 +1,0 @@
-1. part:C,C,A#,A#,,G,F#,F,D#,C,A#           (1x)
-2. part:C,D#,F,A#,C                         (1x)
-
--------------------------------
-dann einfach loopen 
