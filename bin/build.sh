@@ -1,9 +1,9 @@
 #!/bin/bash
 ## Build windows executable file (*.exe), using the Gem 'Ocra'
 
-entry_file='./LD41.rb'
+entry_file='./MedievalMelodyMayhem.rb'
 gemfile='./Gemfile'
-output_file='./LD41.exe'
+output_file='./MedievalMelodyMayhem.exe'
 IFS=$'\n'
 other_files=('./settings.yml')
 other_files_find=($(    \
