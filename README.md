@@ -48,7 +48,10 @@ __Escape__ - __Quit__ the game
 | __Coding__   | @noahro   |
 
 ## Development Information
-This game is written in __Ruby__ using the game library [__Gosu__][gosu].
+This game is written in __Ruby__ using the game library [__Gosu__][gosu].  
+
+We used this [Trello Board][trello-board] for task management during development.
 
 [ludum-dare-game]: https://ldjam.com/events/ludum-dare/41/$74305
 [gosu]:            https://www.libgosu.org/ruby.html
+[trello-board]:    https://trello.com/b/pkaQPFyW/ld41
