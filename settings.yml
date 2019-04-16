@@ -184,7 +184,7 @@ fort:
       - Fort_2
 
 lines:
-  x_offset: 128
+  x_offset: 256
   width:    80
   color:    0x66_444444
   z_index:  40

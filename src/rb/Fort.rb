@@ -44,11 +44,11 @@ class Fort < Instance
 		offset_x = SETTINGS.lines(:x_offset)
 		pos_y    = (GAME.get_size(:height) * 0.5)
 		left_position = {
-			x: (get_left_boundary - offset_x),
+			x: offset_x,
 			y: pos_y
 		}
 		right_position = {
-			x: (get_right_boundary + offset_x),
+			x: (GAME.get_size(:width) - offset_x),
 			y: pos_y
 		}
 		@lines = [
